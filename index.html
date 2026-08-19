@@ -1,0 +1,3080 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>
+      خلّي Claude Code الميديا باير الشخصي تبعك · ورشة لايف · محمد عبد الغني
+      يقدّم محمد العيسوي
+    </title>
+
+    <!-- favicon -->
+    <link
+      rel="icon"
+      type="image/webp"
+      href="https://dr-digital1.com/wp-content/uploads/2025/06/cropped-dr.webp"
+    />
+    <link
+      rel="shortcut icon"
+      type="image/webp"
+      href="https://dr-digital1.com/wp-content/uploads/2025/06/cropped-dr.webp"
+    />
+    <link
+      rel="apple-touch-icon"
+      href="https://dr-digital1.com/wp-content/uploads/2025/06/cropped-dr.webp"
+    />
+
+    <meta
+      name="description"
+      content="ورشة عملية لايف 3 ساعات على زوم: خلّي Claude Code يراقب حملات ميتا، يحلّلها، ينفّذ التحسينات، ويبعتلك تقرير كل صباح — بدون برمجة. مع Skills جاهزة للتنصيب ومكتبة أوامر. الجمعة 28/08، 17:00–20:00."
+    />
+    <meta name="theme-color" content="#141413" />
+    <meta
+      property="og:title"
+      content="الميديا باير الشخصي — ورشة Claude Code للحملات"
+    />
+    <meta
+      property="og:description"
+      content="3 ساعات لايف: بتطلع ونظامك شغال — موصول بحسابك الإعلاني، بيحلّل، بينفّذ، وبيبعتلك تقرير كل صباح. الجمعة 28/08."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="ar_AR" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cairo:wght@600;700;800;900&family=Tajawal:wght@400;500;700&family=JetBrains+Mono:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      /* ============================================================
+   CLAUDE CODE — MEDIA BUYERS WORKSHOP LANDING
+   Palette = Anthropic / Claude Code
+   ============================================================ */
+      :root {
+        --ink: #141413; /* Anthropic near-black */
+        --ink-2: #1d1d1b;
+        --ink-3: #26262300;
+        --panel: #0e0e0d; /* terminal */
+        --cream: #faf9f5; /* Claude light bg */
+        --cream-2: #f0efea;
+        --line-d: rgba(255, 255, 255, 0.1);
+        --line-l: #e4e0d6;
+        --txt-d: #f5f4ef; /* text on dark */
+        --mut-d: #a5a29a; /* muted on dark */
+        --txt-l: #141413; /* text on light */
+        --mut-l: #5f5c55;
+        --coral: #da7756; /* Claude coral */
+        --coral-2: #c15f3c;
+        --coral-soft: rgba(218, 119, 86, 0.14);
+        --ok: #3f8f5f;
+        --bad: #b4443a;
+        --r: 16px;
+        --maxw: 1080px;
+      }
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      html {
+        scroll-behavior: smooth;
+        -webkit-text-size-adjust: 100%;
+      }
+      body {
+        background: var(--ink);
+        color: var(--txt-d);
+        font-family:
+          "Tajawal",
+          "Cairo",
+          -apple-system,
+          "Geeza Pro",
+          sans-serif;
+        font-size: 17px;
+        line-height: 1.85;
+        overflow-x: hidden;
+        -webkit-font-smoothing: antialiased;
+      }
+      h1,
+      h2,
+      h3,
+      h4 {
+        font-family:
+          "Cairo",
+          "Tajawal",
+          -apple-system,
+          "Geeza Pro",
+          sans-serif;
+        line-height: 1.3;
+        font-weight: 800;
+      }
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+      img {
+        max-width: 100%;
+        display: block;
+      }
+      .mono {
+        font-family:
+          "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+      }
+
+      /* ---------- layout ---------- */
+      section {
+        padding: clamp(56px, 7vw, 96px) 20px;
+        position: relative;
+      }
+      .wrap {
+        max-width: var(--maxw);
+        margin: 0 auto;
+      }
+      .narrow {
+        max-width: 800px;
+        margin: 0 auto;
+      }
+      .light {
+        background: var(--cream);
+        color: var(--txt-l);
+      }
+      .light h1,
+      .light h2,
+      .light h3 {
+        color: var(--txt-l);
+      }
+      .light .mut {
+        color: var(--mut-l);
+      }
+      .mut {
+        color: var(--mut-d);
+      }
+      .center {
+        text-align: center;
+      }
+
+      /* ---------- type ---------- */
+      .eyebrow {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 12px;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--coral);
+        margin-bottom: 14px;
+        font-weight: 700;
+      }
+      h2.sec {
+        font-size: clamp(26px, 4.4vw, 40px);
+        margin-bottom: 16px;
+      }
+      .lead {
+        font-size: clamp(17px, 2vw, 20px);
+        line-height: 1.9;
+      }
+      .hl {
+        color: var(--coral);
+        font-weight: 700;
+      }
+      .light .hl {
+        color: var(--coral-2);
+      }
+      .mark-txt {
+        background: var(--coral-soft);
+        padding: 2px 7px;
+        border-radius: 6px;
+        font-weight: 700;
+        color: var(--coral);
+      }
+      .light .mark-txt {
+        color: var(--coral-2);
+      }
+
+      /* ---------- buttons ---------- */
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        background: var(--coral);
+        color: #fff;
+        font-family: "Cairo", sans-serif;
+        font-weight: 800;
+        font-size: clamp(16px, 2vw, 19px);
+        padding: 16px 30px;
+        border-radius: 14px;
+        border: 0;
+        cursor: pointer;
+        box-shadow: 0 10px 30px -8px rgba(218, 119, 86, 0.55);
+        transition:
+          transform 0.18s ease,
+          box-shadow 0.18s ease,
+          background 0.18s ease;
+        text-align: center;
+        line-height: 1.4;
+      }
+      .btn:hover {
+        background: var(--coral-2);
+        transform: translateY(-2px);
+        box-shadow: 0 16px 38px -10px rgba(218, 119, 86, 0.65);
+      }
+      .btn:active {
+        transform: translateY(0);
+      }
+      .btn.ghost {
+        background: transparent;
+        color: var(--txt-d);
+        border: 1px solid var(--line-d);
+        box-shadow: none;
+        font-weight: 700;
+      }
+      .light .btn.ghost {
+        color: var(--txt-l);
+        border-color: var(--line-l);
+      }
+      .btn.ghost:hover {
+        background: rgba(255, 255, 255, 0.06);
+        transform: none;
+      }
+      .light .btn.ghost:hover {
+        background: rgba(0, 0, 0, 0.04);
+      }
+      .btn.big {
+        width: 100%;
+        max-width: 460px;
+        padding: 19px 30px;
+        font-size: clamp(17px, 2.2vw, 21px);
+      }
+      .btn-sub {
+        font-size: 13px;
+        color: var(--mut-d);
+        margin-top: 12px;
+        font-family: "JetBrains Mono", monospace;
+      }
+      .light .btn-sub {
+        color: var(--mut-l);
+      }
+
+      /* ---------- topbar ---------- */
+      .topbar {
+        position: sticky;
+        top: 0;
+        z-index: 60;
+        background: rgba(20, 20, 19, 0.88);
+        backdrop-filter: blur(12px);
+        border-bottom: 1px solid var(--line-d);
+      }
+      .topbar .in {
+        max-width: var(--maxw);
+        margin: 0 auto;
+        padding: 11px 20px;
+        display: flex;
+        align-items: center;
+        gap: 14px;
+      }
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 9px;
+        font-family: "Cairo", sans-serif;
+        font-weight: 800;
+        font-size: 15px;
+      }
+      .brand svg {
+        width: 22px;
+        height: 22px;
+        color: var(--coral);
+        flex: 0 0 auto;
+      }
+      .topbar .when {
+        margin-inline-start: auto;
+        font-family: "JetBrains Mono", monospace;
+        font-size: 12.5px;
+        color: var(--mut-d);
+        white-space: nowrap;
+      }
+      .topbar .btn {
+        padding: 9px 18px;
+        font-size: 14px;
+        border-radius: 10px;
+        box-shadow: none;
+      }
+      @media (max-width: 700px) {
+        .topbar .when {
+          display: none;
+        }
+        .topbar .in {
+          padding: 9px 14px;
+        }
+      }
+
+      /* ---------- hero ---------- */
+      .hero {
+        padding-top: clamp(34px, 4vw, 48px);
+        padding-bottom: clamp(40px, 5vw, 64px);
+        overflow: hidden;
+      }
+      .hero:before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: 0;
+        pointer-events: none;
+        background:
+          radial-gradient(
+            600px 380px at 78% -8%,
+            rgba(218, 119, 86, 0.2),
+            transparent 70%
+          ),
+          radial-gradient(
+            520px 340px at 8% 12%,
+            rgba(120, 110, 255, 0.1),
+            transparent 70%
+          );
+      }
+      .dots {
+        position: absolute;
+        inset: 0;
+        z-index: 0;
+        pointer-events: none;
+        opacity: 0.5;
+        background-image: radial-gradient(
+          rgba(255, 255, 255, 0.055) 1px,
+          transparent 1px
+        );
+        background-size: 26px 26px;
+        mask-image: linear-gradient(to bottom, #000, transparent 85%);
+        -webkit-mask-image: linear-gradient(to bottom, #000, transparent 85%);
+      }
+      .hero .wrap {
+        position: relative;
+        z-index: 1;
+      }
+      .presents {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 6px 8px 6px 14px;
+        border: 1px solid var(--line-d);
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.03);
+        font-size: 14px;
+        margin-bottom: 16px;
+      }
+      /* الصورة ع السيرفر هي الأصل الكامل 900×1600 (جسم كامل).
+   بنقصّها بالـCSS: إطار ثابت + الصورة مكبّرة ومزحلقة عشان يبين الوجه.
+   النِسب مئوية فبتضل مضبوطة بأي حجم للإطار طالما نسبته نفسها. */
+      .presents .pav {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        overflow: hidden;
+        position: relative;
+        flex: 0 0 auto;
+        border: 1.5px solid var(--coral);
+        background: #221f1c;
+      }
+      .presents .pav img {
+        position: absolute;
+        width: 214.29%;
+        height: auto;
+        left: -71.43%;
+        top: -111.9%;
+        max-width: none;
+      }
+      .presents b {
+        font-family: "Cairo", sans-serif;
+        font-weight: 800;
+      }
+      h1 {
+        font-size: clamp(28px, 4.4vw, 44px);
+        font-weight: 900;
+        letter-spacing: -0.4px;
+        margin-bottom: 16px;
+        line-height: 1.28;
+      }
+      h1 .g {
+        background: linear-gradient(
+          95deg,
+          var(--coral) 0%,
+          #efa184 55%,
+          #f5f4ef 100%
+        );
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      .hero .lead {
+        max-width: 620px;
+        color: #d9d6cf;
+        font-size: clamp(16px, 1.7vw, 18.5px);
+        line-height: 1.8;
+      }
+      .chips {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 9px;
+        margin: 20px 0 24px;
+      }
+      .chip {
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+        padding: 8px 13px;
+        border-radius: 10px;
+        background: rgba(255, 255, 255, 0.045);
+        border: 1px solid var(--line-d);
+        font-family: "JetBrains Mono", monospace;
+        font-size: 13px;
+        color: #dddad3;
+      }
+      .chip svg {
+        width: 15px;
+        height: 15px;
+        color: var(--coral);
+      }
+      .hero-cta {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+      }
+      .hero-grid {
+        display: grid;
+        grid-template-columns: 1.08fr 0.92fr;
+        gap: 44px;
+        align-items: center;
+      }
+      @media (max-width: 900px) {
+        .hero-grid {
+          grid-template-columns: 1fr;
+          gap: 32px;
+        }
+        .hero-cta {
+          align-items: stretch;
+        }
+      }
+
+      /* ---------- terminal ---------- */
+      .term {
+        background: var(--panel);
+        border: 1px solid rgba(255, 255, 255, 0.13);
+        border-radius: 14px;
+        overflow: hidden;
+        box-shadow: 0 30px 70px -25px rgba(0, 0, 0, 0.85);
+      }
+      .term-bar {
+        display: flex;
+        align-items: center;
+        gap: 7px;
+        padding: 10px 14px;
+        background: #181817;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      }
+      .term-bar i {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: #3a3a37;
+        display: block;
+      }
+      .term-bar i:first-child {
+        background: #d8604c;
+      }
+      .term-bar i:nth-child(2) {
+        background: #d8a24c;
+      }
+      .term-bar i:nth-child(3) {
+        background: #5fa86b;
+      }
+      .term-bar span {
+        margin-inline-start: 8px;
+        font-family: "JetBrains Mono", monospace;
+        font-size: 11.5px;
+        color: #7c7972;
+        direction: ltr;
+      }
+      .term-body {
+        padding: 18px 16px;
+        font-family: "JetBrains Mono", monospace;
+        font-size: 13px;
+        line-height: 2.05;
+        direction: ltr;
+        text-align: left;
+        min-height: 236px;
+      }
+      .tl {
+        white-space: pre-wrap;
+        word-break: break-word;
+      }
+      .tl.cmd {
+        direction: rtl;
+        text-align: right;
+      }
+      .tl.cmd .tc {
+        unicode-bidi: plaintext;
+      }
+      .tp {
+        color: var(--coral);
+        font-weight: 700;
+      }
+      .tc {
+        color: #edebe5;
+      }
+      .to {
+        color: #8b8880;
+      }
+      .tg {
+        color: #6fbf8a;
+      }
+      .caret {
+        display: inline-block;
+        width: 8px;
+        height: 15px;
+        background: var(--coral);
+        vertical-align: -2px;
+        animation: blink 1s steps(1) infinite;
+      }
+      @keyframes blink {
+        50% {
+          opacity: 0;
+        }
+      }
+
+      /* ---------- trust row ---------- */
+      .trust {
+        border-top: 1px solid var(--line-d);
+        border-bottom: 1px solid var(--line-d);
+        background: rgba(255, 255, 255, 0.02);
+        padding: 22px 20px;
+      }
+      .trust .in {
+        max-width: var(--maxw);
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: clamp(16px, 4vw, 44px);
+        flex-wrap: wrap;
+      }
+      .trust .t {
+        display: flex;
+        align-items: center;
+        gap: 9px;
+        font-size: 14.5px;
+        color: #cfccc5;
+      }
+      .trust .t b {
+        font-family: "Cairo", sans-serif;
+        color: #fff;
+        font-size: 16px;
+      }
+      .trust .t svg {
+        width: 17px;
+        height: 17px;
+        color: var(--coral);
+        flex: 0 0 auto;
+      }
+      .trust .tlabel {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 12px;
+        color: var(--coral);
+        letter-spacing: 0.06em;
+      }
+      @media (max-width: 760px) {
+        .trust .in {
+          gap: 12px;
+        }
+        .trust .tlabel {
+          width: 100%;
+          text-align: center;
+        }
+      }
+
+      /* ---------- cards ---------- */
+      .card {
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid var(--line-d);
+        border-radius: var(--r);
+        padding: 24px;
+      }
+      .light .card {
+        background: #fff;
+        border-color: var(--line-l);
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+      }
+      .grid2 {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+      }
+      .grid3 {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 18px;
+      }
+      @media (max-width: 860px) {
+        .grid2,
+        .grid3 {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      /* ---------- host / speaker ---------- */
+      .who {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        gap: 20px;
+        align-items: start;
+      }
+      .who img {
+        width: 104px;
+        height: 104px;
+        border-radius: 18px;
+        object-fit: cover;
+        object-position: center 22%;
+      }
+      .host {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        gap: 22px;
+        align-items: center;
+        margin: 26px 0 22px;
+        padding: 18px;
+        background: #fff;
+        border: 1px solid var(--line);
+        border-radius: 20px;
+        box-shadow: 0 6px 26px rgba(20, 20, 19, 0.05);
+      }
+      .host .shot {
+        width: 132px;
+        height: 176px;
+        border-radius: 16px;
+        overflow: hidden;
+        position: relative;
+        display: block;
+        background: #eee;
+      }
+      .host .shot img {
+        position: absolute;
+        width: 176.47%;
+        height: auto;
+        left: -50%;
+        top: -69.12%;
+        max-width: none;
+      }
+      .host h3 {
+        font-size: 22px;
+        margin-bottom: 5px;
+      }
+      .host .role {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 12px;
+        color: var(--coral);
+        letter-spacing: 0.04em;
+        margin-bottom: 12px;
+      }
+      .hbadges {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+      @media (max-width: 560px) {
+        .host {
+          grid-template-columns: 1fr;
+          justify-items: center;
+          text-align: center;
+          gap: 16px;
+        }
+        .host .shot {
+          width: 150px;
+          height: 200px;
+        }
+        .hbadges {
+          justify-content: center;
+        }
+      }
+      .who h3 {
+        font-size: 21px;
+        margin-bottom: 3px;
+      }
+      .who .role {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 12px;
+        color: var(--coral);
+        letter-spacing: 0.04em;
+        margin-bottom: 12px;
+      }
+      @media (max-width: 560px) {
+        .who {
+          grid-template-columns: 1fr;
+        }
+        .who img {
+          width: 92px;
+          height: 92px;
+        }
+      }
+      .badges {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 14px;
+      }
+      .badge {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 12px;
+        padding: 6px 11px;
+        border-radius: 8px;
+        background: var(--coral-soft);
+        color: #efa184;
+        border: 1px solid rgba(218, 119, 86, 0.3);
+      }
+      .light .badge {
+        color: var(--coral-2);
+      }
+      .badge.gold {
+        background: rgba(214, 177, 86, 0.14);
+        border-color: rgba(214, 177, 86, 0.38);
+        color: #d9bc72;
+      }
+      .light .badge.gold {
+        color: #8a6d1c;
+      }
+      .proofs {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+        margin-top: 18px;
+      }
+      .proofs figure {
+        border: 1px solid var(--line-d);
+        border-radius: 12px;
+        overflow: hidden;
+        background: rgba(0, 0, 0, 0.25);
+      }
+      .light .proofs figure {
+        border-color: var(--line-l);
+        background: #fff;
+      }
+      .proofs img {
+        width: 100%;
+        height: 260px;
+        object-fit: contain;
+        background: #f2f0ea;
+      }
+      .light .proofs img {
+        background: #f2f0ea;
+      }
+      @media (max-width: 600px) {
+        .proofs {
+          grid-template-columns: 1fr;
+        }
+        .proofs img {
+          height: auto;
+          max-height: 420px;
+        }
+      }
+      .proofs figcaption {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 11px;
+        color: var(--mut-d);
+        padding: 7px 9px;
+        border-top: 1px solid var(--line-d);
+        text-align: center;
+      }
+      .light .proofs figcaption {
+        color: var(--mut-l);
+        border-color: var(--line-l);
+      }
+
+      /* ---------- pain list ---------- */
+      .pains {
+        display: grid;
+        gap: 12px;
+        margin-top: 26px;
+      }
+      .pain {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        gap: 14px;
+        align-items: start;
+        background: #fff;
+        border: 1px solid var(--line-l);
+        border-radius: 14px;
+        padding: 16px 18px;
+      }
+      .pain .x {
+        width: 26px;
+        height: 26px;
+        border-radius: 8px;
+        background: rgba(180, 68, 58, 0.1);
+        color: var(--bad);
+        display: grid;
+        place-items: center;
+        font-weight: 900;
+        font-size: 15px;
+        flex: 0 0 auto;
+      }
+      .pain.want {
+        border-color: rgba(217, 119, 87, 0.45);
+        background: rgba(217, 119, 87, 0.05);
+      }
+      .pain.want .x {
+        background: rgba(217, 119, 87, 0.14);
+        color: var(--coral-2);
+      }
+      .verdict {
+        margin-top: 26px;
+        background: #fff;
+        border: 1px solid var(--line-l);
+        border-inline-start: 4px solid var(--coral);
+        border-radius: 14px;
+        padding: 20px 22px;
+      }
+      .verdict b {
+        color: var(--coral-2);
+      }
+
+      /* ---------- compare table ---------- */
+      .cmp {
+        margin-top: 26px;
+        border: 1px solid var(--line-d);
+        border-radius: 14px;
+        overflow: hidden;
+      }
+      .cmp .row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        border-bottom: 1px solid var(--line-d);
+      }
+      .cmp .row:last-child {
+        border-bottom: 0;
+      }
+      .cmp .c {
+        padding: 15px 18px;
+        font-size: 15.5px;
+      }
+      .cmp .c:first-child {
+        border-inline-end: 1px solid var(--line-d);
+        color: var(--mut-d);
+      }
+      .cmp .head {
+        background: rgba(255, 255, 255, 0.05);
+        font-family: "Cairo", sans-serif;
+        font-weight: 800;
+        font-size: 15px;
+      }
+      .cmp .head .c:first-child {
+        color: #c9c6bf;
+      }
+      .cmp .head .c:last-child {
+        color: var(--coral);
+      }
+      .cmp .c:last-child b {
+        color: #fff;
+      }
+      @media (max-width: 640px) {
+        .cmp .row {
+          grid-template-columns: 1fr;
+        }
+        .cmp .c:first-child {
+          border-inline-end: 0;
+          border-bottom: 1px dashed var(--line-d);
+        }
+        .cmp .head {
+          display: none;
+        }
+        .cmp .c:first-child:before {
+          content: "الطريقة اليدوية · ";
+          color: var(--bad);
+          font-weight: 700;
+        }
+        .cmp .c:last-child:before {
+          content: "مع Claude Code · ";
+          color: var(--coral);
+          font-weight: 700;
+        }
+      }
+
+      /* ---------- do list ---------- */
+      .dolist {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 11px;
+        margin-top: 24px;
+      }
+      @media (max-width: 760px) {
+        .dolist {
+          grid-template-columns: 1fr;
+        }
+      }
+      .do {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        gap: 11px;
+        align-items: start;
+        background: rgba(255, 255, 255, 0.035);
+        border: 1px solid var(--line-d);
+        border-radius: 12px;
+        padding: 13px 15px;
+        font-size: 15.5px;
+      }
+      .do .v {
+        color: var(--coral);
+        font-weight: 900;
+        line-height: 1.6;
+      }
+      .note {
+        margin-top: 16px;
+        font-size: 14.5px;
+        color: var(--mut-d);
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px dashed var(--line-d);
+        border-radius: 12px;
+        padding: 14px 16px;
+      }
+      .note b {
+        color: #e8e5de;
+      }
+
+      /* ---------- agenda ---------- */
+      .agenda {
+        margin-top: 28px;
+        display: grid;
+        gap: 0;
+      }
+      .ag {
+        display: grid;
+        grid-template-columns: 96px 1fr;
+        gap: 18px;
+        padding: 20px 0;
+        border-bottom: 1px solid var(--line-l);
+      }
+      .ag:last-child {
+        border-bottom: 0;
+      }
+      .ag .t {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 14px;
+        color: var(--coral-2);
+        font-weight: 700;
+        direction: ltr;
+        text-align: left;
+        padding-top: 3px;
+      }
+      .ag h4 {
+        font-size: 18px;
+        margin-bottom: 5px;
+      }
+      .ag p {
+        font-size: 15.5px;
+        color: var(--mut-l);
+      }
+      .ag.brk h4,
+      .ag.brk .t {
+        opacity: 0.62;
+      }
+      @media (max-width: 560px) {
+        .ag {
+          grid-template-columns: 1fr;
+          gap: 4px;
+        }
+        .ag .t {
+          text-align: right;
+          direction: ltr;
+        }
+      }
+
+      /* ---------- offer stack ---------- */
+      .stack {
+        border: 1px solid var(--line-d);
+        border-radius: 16px;
+        overflow: hidden;
+        margin-top: 28px;
+        background: rgba(255, 255, 255, 0.03);
+      }
+      .si {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 14px;
+        align-items: center;
+        padding: 17px 20px;
+        border-bottom: 1px solid var(--line-d);
+      }
+      .si:last-of-type {
+        border-bottom: 0;
+      }
+      .si .n {
+        font-family: "Cairo", sans-serif;
+        font-weight: 800;
+        font-size: 16.5px;
+        margin-bottom: 3px;
+      }
+      .si .d {
+        font-size: 14.5px;
+        color: var(--mut-d);
+        line-height: 1.7;
+      }
+      .si .p {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 14px;
+        color: #b9b6af;
+        white-space: nowrap;
+        direction: ltr;
+      }
+      .si .p s {
+        opacity: 0.75;
+      }
+      .si.free .p {
+        color: var(--coral);
+        font-weight: 700;
+      }
+      .si.hot {
+        background: rgba(217, 119, 87, 0.06);
+      }
+      .btag {
+        margin-left: 8px;
+      }
+      .btag {
+        display: inline-block;
+        vertical-align: 2px;
+        font-family: "JetBrains Mono", monospace;
+        font-size: 11px;
+        font-weight: 700;
+        color: var(--coral-2);
+        background: rgba(217, 119, 87, 0.14);
+        border: 1px solid rgba(217, 119, 87, 0.35);
+        border-radius: 6px;
+        padding: 2px 8px;
+        letter-spacing: 0.04em;
+      }
+      .tot {
+        background: rgba(218, 119, 86, 0.1);
+        border-top: 1px solid rgba(218, 119, 86, 0.32);
+        padding: 18px 20px;
+      }
+      .tot .r {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        gap: 12px;
+        font-size: 16px;
+        padding: 4px 0;
+      }
+      .tot .r .v {
+        font-family: "JetBrains Mono", monospace;
+        direction: ltr;
+      }
+      .tot .r.big {
+        font-family: "Cairo", sans-serif;
+        font-weight: 900;
+        font-size: clamp(19px, 3vw, 25px);
+        color: #fff;
+        padding-top: 12px;
+        margin-top: 8px;
+        border-top: 1px dashed rgba(255, 255, 255, 0.18);
+      }
+      .tot .r.big .v {
+        color: var(--coral);
+      }
+      .tot .r.sv {
+        color: var(--ok);
+        font-weight: 700;
+      }
+      .light .tot .r.sv {
+        color: #2f7a4c;
+      }
+
+      /* ---------- fit ---------- */
+      .fit {
+        border-radius: 16px;
+        padding: 22px;
+        border: 1px solid var(--line-l);
+        background: #fff;
+      }
+      .fit.yes {
+        border-color: rgba(63, 143, 95, 0.4);
+        background: rgba(63, 143, 95, 0.045);
+      }
+      .fit.no {
+        border-color: rgba(180, 68, 58, 0.32);
+        background: rgba(180, 68, 58, 0.04);
+      }
+      .fit h3 {
+        font-size: 19px;
+        margin-bottom: 12px;
+        display: flex;
+        align-items: center;
+        gap: 9px;
+      }
+      .fit.yes h3 {
+        color: #2f7a4c;
+      }
+      .fit.no h3 {
+        color: #9b392f;
+      }
+      .fit ul {
+        list-style: none;
+        display: grid;
+        gap: 9px;
+      }
+      .fit li {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        gap: 9px;
+        font-size: 15.5px;
+        align-items: start;
+      }
+      .fit li span {
+        font-weight: 900;
+        line-height: 1.7;
+      }
+      .fit.yes li span {
+        color: #2f7a4c;
+      }
+      .fit.no li span {
+        color: #9b392f;
+      }
+
+      /* ---------- requirements ---------- */
+      .req {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 14px;
+        margin-top: 24px;
+      }
+      @media (max-width: 860px) {
+        .req {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+      @media (max-width: 480px) {
+        .req {
+          grid-template-columns: 1fr;
+        }
+      }
+      .rq {
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid var(--line-d);
+        border-radius: 14px;
+        padding: 18px;
+      }
+      .rq svg {
+        width: 22px;
+        height: 22px;
+        color: var(--coral);
+        margin-bottom: 10px;
+      }
+      .rq h4 {
+        font-size: 16px;
+        margin-bottom: 5px;
+      }
+      .rq p {
+        font-size: 14px;
+        color: var(--mut-d);
+        line-height: 1.7;
+      }
+
+      /* ---------- faq ---------- */
+      .faq {
+        margin-top: 26px;
+        display: grid;
+        gap: 12px;
+      }
+      details {
+        background: #fff;
+        border: 1px solid var(--line-l);
+        border-radius: 14px;
+        overflow: hidden;
+      }
+      summary {
+        cursor: pointer;
+        padding: 17px 20px;
+        font-family: "Cairo", sans-serif;
+        font-weight: 800;
+        font-size: 16.5px;
+        list-style: none;
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+        align-items: center;
+      }
+      summary::-webkit-details-marker {
+        display: none;
+      }
+      summary:after {
+        content: "+";
+        color: var(--coral-2);
+        font-size: 22px;
+        font-weight: 700;
+        flex: 0 0 auto;
+        transition: transform 0.2s;
+      }
+      details[open] summary:after {
+        transform: rotate(45deg);
+      }
+      details .a {
+        padding: 0 20px 19px;
+        font-size: 15.5px;
+        color: var(--mut-l);
+        line-height: 1.95;
+      }
+      details .a b {
+        color: var(--txt-l);
+      }
+
+      /* ---------- final ---------- */
+      .final {
+        background: linear-gradient(180deg, #141413 0%, #0c0c0b 100%);
+      }
+      .cdown {
+        display: flex;
+        gap: 10px;
+        justify-content: center;
+        margin: 22px 0 8px;
+        flex-wrap: wrap;
+        direction: ltr;
+      }
+      .cd {
+        min-width: 78px;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid var(--line-d);
+        border-radius: 12px;
+        padding: 12px 8px;
+      }
+      .cd b {
+        display: block;
+        font-family: "JetBrains Mono", monospace;
+        font-size: 26px;
+        font-weight: 700;
+        color: #fff;
+        line-height: 1.25;
+      }
+      .cd span {
+        font-size: 12px;
+        color: var(--mut-d);
+      }
+      .intimate {
+        max-width: 640px;
+        margin: 16px auto 0;
+        font-size: 15.5px;
+        line-height: 1.85;
+        color: var(--mut-d);
+        text-align: center;
+      }
+      .intimate b {
+        color: #fff;
+      }
+      .pricetag {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 2px;
+        margin-bottom: 14px;
+      }
+      .pricetag b {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 38px;
+        font-weight: 700;
+        color: #fff;
+        line-height: 1.1;
+      }
+      .pricetag span {
+        font-size: 13px;
+        color: var(--mut-d);
+      }
+      .tot .r.vat {
+        margin-top: -6px;
+      }
+      .tot .r.vat .v {
+        font-size: 13px;
+        color: var(--mut);
+        font-weight: 500;
+      }
+      .seats {
+        display: inline-flex;
+        align-items: center;
+        gap: 9px;
+        margin-top: 6px;
+        padding: 8px 15px;
+        border-radius: 999px;
+        background: rgba(218, 119, 86, 0.13);
+        border: 1px solid rgba(218, 119, 86, 0.34);
+        font-family: "JetBrains Mono", monospace;
+        font-size: 13.5px;
+        color: #efa184;
+      }
+      .paybox {
+        max-width: 520px;
+        margin: 26px auto 0;
+        text-align: center;
+      }
+      .secure {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        margin-top: 14px;
+        font-family: "JetBrains Mono", monospace;
+        font-size: 12px;
+        color: var(--mut-d);
+      }
+      .secure svg {
+        width: 14px;
+        height: 14px;
+      }
+
+      /* ---------- form ---------- */
+      .formbox {
+        max-width: 520px;
+        margin: 34px auto 0;
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid var(--line-d);
+        border-radius: 18px;
+        padding: clamp(20px, 4vw, 28px);
+      }
+      .formbox h3 {
+        font-size: 19px;
+        margin-bottom: 6px;
+      }
+      .spin {
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        margin-left: 9px;
+        vertical-align: -3px;
+        border: 2px solid rgba(255, 255, 255, 0.35);
+        border-top-color: #fff;
+        border-radius: 50%;
+        animation: spin 0.7s linear infinite;
+      }
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+      .btn[disabled] {
+        opacity: 0.85;
+        cursor: progress;
+      }
+      .formbox.is-loading .field {
+        opacity: 0.5;
+        pointer-events: none;
+        transition: opacity 0.2s;
+      }
+      .sending-note {
+        margin-top: 12px;
+        text-align: center;
+        font-size: 13px;
+        color: var(--mut-d);
+        opacity: 0;
+        transition: opacity 0.35s;
+      }
+      .sending-note.show {
+        opacity: 1;
+      }
+      .paystep {
+        text-align: center;
+      }
+      .paystep .ps-ok {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-family: "JetBrains Mono", monospace;
+        font-size: 13px;
+        font-weight: 700;
+        color: var(--ok);
+        background: rgba(45, 138, 86, 0.12);
+        border: 1px solid rgba(45, 138, 86, 0.35);
+        border-radius: 999px;
+        padding: 6px 14px;
+        margin-bottom: 16px;
+      }
+      .paystep .ps-ok svg {
+        width: 15px;
+        height: 15px;
+      }
+      .paystep h3 {
+        font-size: 22px;
+        margin-bottom: 8px;
+      }
+      .paystep > p {
+        font-size: 15px;
+        color: var(--mut-d);
+        line-height: 1.75;
+        margin-bottom: 18px;
+      }
+      .ps-price {
+        margin-bottom: 14px;
+      }
+      .ps-price b {
+        display: block;
+        font-family: "JetBrains Mono", monospace;
+        font-size: 34px;
+        font-weight: 700;
+        color: #fff;
+        line-height: 1.15;
+      }
+      .ps-price span {
+        font-size: 12.5px;
+        color: var(--mut-d);
+      }
+      .ps-note {
+        margin-top: 16px;
+        font-size: 13.5px;
+        color: var(--mut-d);
+        line-height: 1.7;
+      }
+      .formbox > p {
+        font-size: 14.5px;
+        color: var(--mut-d);
+        margin-bottom: 18px;
+      }
+      .field {
+        margin-bottom: 14px;
+        text-align: right;
+      }
+      .field label {
+        display: block;
+        font-size: 14px;
+        font-weight: 700;
+        margin-bottom: 6px;
+      }
+      .field label i {
+        color: var(--coral);
+        font-style: normal;
+      }
+      .field input {
+        width: 100%;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid var(--line-d);
+        color: var(--txt-d);
+        padding: 13px 15px;
+        border-radius: 11px;
+        font-family: inherit;
+        font-size: 16px;
+        transition:
+          border-color 0.2s,
+          box-shadow 0.2s;
+      }
+      .field input::placeholder {
+        color: #6f6c65;
+      }
+      .field input:focus {
+        outline: 0;
+        border-color: var(--coral);
+        box-shadow: 0 0 0 3px rgba(218, 119, 86, 0.18);
+      }
+      .fmsg {
+        padding: 13px 15px;
+        border-radius: 11px;
+        font-size: 14.5px;
+        margin-bottom: 14px;
+        font-weight: 700;
+      }
+      .fmsg.ok {
+        background: rgba(63, 143, 95, 0.16);
+        border: 1px solid rgba(63, 143, 95, 0.4);
+        color: #8fd3a6;
+      }
+      .fmsg.err {
+        background: rgba(180, 68, 58, 0.16);
+        border: 1px solid rgba(180, 68, 58, 0.4);
+        color: #e79c93;
+      }
+
+      /* ---------- footer ---------- */
+      footer {
+        background: #0a0a09;
+        border-top: 1px solid var(--line-d);
+        padding: 34px 20px 90px;
+        text-align: center;
+      }
+      footer .fl {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 9px;
+        font-family: "Cairo", sans-serif;
+        font-weight: 800;
+        margin-bottom: 12px;
+      }
+      footer .fl svg {
+        width: 20px;
+        height: 20px;
+        color: var(--coral);
+      }
+      footer p {
+        font-size: 13px;
+        color: #77746d;
+        line-height: 1.9;
+        max-width: 640px;
+        margin: 0 auto 8px;
+      }
+
+      /* ---------- sticky mobile bar ---------- */
+      .sticky {
+        position: fixed;
+        inset-inline: 0;
+        bottom: 0;
+        z-index: 70;
+        display: none;
+        gap: 12px;
+        align-items: center;
+        padding: 10px 14px;
+        background: rgba(14, 14, 13, 0.96);
+        backdrop-filter: blur(12px);
+        border-top: 1px solid var(--line-d);
+      }
+      .sticky .pz {
+        font-family: "Cairo", sans-serif;
+        font-weight: 900;
+        font-size: 17px;
+        white-space: nowrap;
+      }
+      .sticky .pz small {
+        display: block;
+        font-family: "JetBrains Mono", monospace;
+        font-size: 10.5px;
+        color: var(--mut-d);
+        font-weight: 400;
+      }
+      .sticky .btn {
+        flex: 1;
+        padding: 13px 16px;
+        font-size: 16px;
+        border-radius: 11px;
+        box-shadow: none;
+      }
+      @media (max-width: 760px) {
+        .sticky {
+          display: flex;
+        }
+      }
+
+      /* ---------- reveal ---------- */
+      .rev {
+        opacity: 0;
+        transform: translateY(18px);
+        transition:
+          opacity 0.6s ease,
+          transform 0.6s ease;
+      }
+      .rev.in {
+        opacity: 1;
+        transform: none;
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .rev {
+          opacity: 1;
+          transform: none;
+          transition: none;
+        }
+        .caret {
+          animation: none;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Claude mark sprite -->
+    <svg width="0" height="0" style="position: absolute" aria-hidden="true">
+      <symbol id="cmark" viewBox="0 0 100 100">
+        <g fill="currentColor">
+          <path
+            d="M50 7c2.6 0 4.7 2.1 4.7 4.7L52.6 43c-.1 1.5-1.1 2.5-2.6 2.5s-2.5-1-2.6-2.5L45.3 11.7C45.3 9.1 47.4 7 50 7z"
+          />
+          <path
+            transform="rotate(45 50 50)"
+            d="M50 7c2.6 0 4.7 2.1 4.7 4.7L52.6 43c-.1 1.5-1.1 2.5-2.6 2.5s-2.5-1-2.6-2.5L45.3 11.7C45.3 9.1 47.4 7 50 7z"
+          />
+          <path
+            transform="rotate(90 50 50)"
+            d="M50 7c2.6 0 4.7 2.1 4.7 4.7L52.6 43c-.1 1.5-1.1 2.5-2.6 2.5s-2.5-1-2.6-2.5L45.3 11.7C45.3 9.1 47.4 7 50 7z"
+          />
+          <path
+            transform="rotate(135 50 50)"
+            d="M50 7c2.6 0 4.7 2.1 4.7 4.7L52.6 43c-.1 1.5-1.1 2.5-2.6 2.5s-2.5-1-2.6-2.5L45.3 11.7C45.3 9.1 47.4 7 50 7z"
+          />
+          <path
+            transform="rotate(180 50 50)"
+            d="M50 7c2.6 0 4.7 2.1 4.7 4.7L52.6 43c-.1 1.5-1.1 2.5-2.6 2.5s-2.5-1-2.6-2.5L45.3 11.7C45.3 9.1 47.4 7 50 7z"
+          />
+          <path
+            transform="rotate(225 50 50)"
+            d="M50 7c2.6 0 4.7 2.1 4.7 4.7L52.6 43c-.1 1.5-1.1 2.5-2.6 2.5s-2.5-1-2.6-2.5L45.3 11.7C45.3 9.1 47.4 7 50 7z"
+          />
+          <path
+            transform="rotate(270 50 50)"
+            d="M50 7c2.6 0 4.7 2.1 4.7 4.7L52.6 43c-.1 1.5-1.1 2.5-2.6 2.5s-2.5-1-2.6-2.5L45.3 11.7C45.3 9.1 47.4 7 50 7z"
+          />
+          <path
+            transform="rotate(315 50 50)"
+            d="M50 7c2.6 0 4.7 2.1 4.7 4.7L52.6 43c-.1 1.5-1.1 2.5-2.6 2.5s-2.5-1-2.6-2.5L45.3 11.7C45.3 9.1 47.4 7 50 7z"
+          />
+        </g>
+      </symbol>
+    </svg>
+
+    <!-- ============ TOPBAR ============ -->
+    <header class="topbar">
+      <div class="in">
+        <div class="brand">
+          <svg><use href="#cmark" /></svg> Claude&nbsp;Code للميديا بايرز
+        </div>
+        <div class="when">
+          الجمعة <span dir="ltr">28/08</span> ·
+          <span dir="ltr">17:00–20:00</span> · زوم
+        </div>
+        <a href="#join" class="btn" data-cta="topbar">احجز مقعدك</a>
+      </div>
+    </header>
+
+    <!-- ============ HERO ============ -->
+    <section class="hero">
+      <div class="dots"></div>
+      <div class="wrap">
+        <div class="hero-grid">
+          <div>
+            <div class="presents rev">
+              <span class="pav"
+                ><img
+                  src="https://media.landy-ai.com/Landy-Media/685a6c4cf60f37af53e6b277/rm5uu7yo9f-3067.jpeg"
+                  alt="محمد عبد الغني"
+              /></span>
+              <span><b>محمد عبد الغني</b> بيقدّم</span>
+            </div>
+
+            <h1 class="rev">
+              خلّي <span dir="ltr">Claude&nbsp;Code</span>
+              <span class="g">الميديا باير الشخصي</span> تبعك
+            </h1>
+
+            <p class="lead rev">
+              <b>بيراقب حملاتك، بيحلّلها، وبيحسّنها — كل يوم.</b> ورشة عملية
+              لايف 3 ساعات، من الصفر للاحتراف. مش محاضرة نظرية: بتطلع منها
+              <span class="hl">ونظامك شغّال فعلياً</span> — موصول بحسابك
+              الإعلاني، بينفّذ التعديلات بموافقتك، وبيبعتلك تقرير كل صباح.
+              <b>بدون سطر كود واحد.</b>
+            </p>
+
+            <div class="chips rev">
+              <span class="chip"
+                ><svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                >
+                  <rect x="3" y="4" width="18" height="18" rx="2" />
+                  <path d="M16 2v4M8 2v4M3 10h18" />
+                </svg>
+                الجمعة <span dir="ltr">28/08/2026</span></span
+              >
+              <span class="chip"
+                ><svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                >
+                  <circle cx="12" cy="12" r="9" />
+                  <path d="M12 7v5l3 2" />
+                </svg>
+                <span dir="ltr">17:00–20:00</span> بتوقيت القدس</span
+              >
+              <span class="chip"
+                ><svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                >
+                  <path d="m22 8-6 4 6 4V8Z" />
+                  <rect x="2" y="6" width="14" height="12" rx="2" />
+                </svg>
+                زوم · لايف + تسجيل</span
+              >
+              <span class="chip"
+                ><svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                >
+                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                  <circle cx="9" cy="7" r="4" />
+                  <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                </svg>
+                مقاعد محدودة</span
+              >
+            </div>
+
+            <div class="hero-cta rev">
+              <a href="#join" class="btn big" data-cta="hero"
+                >أنا داخل — احجز مقعدي</a
+              >
+              <span class="btn-sub"
+                >&rlm;// Skills جاهزة + مكتبة أوامر + تسجيل كامل</span
+              >
+            </div>
+          </div>
+
+          <div class="rev">
+            <div class="term">
+              <div class="term-bar">
+                <i></i><i></i><i></i><span>claude-code — media-buyer</span>
+              </div>
+              <div class="term-body" id="term" aria-hidden="true"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ TRUST ============ -->
+    <div class="trust">
+      <div class="in">
+        <div class="tlabel">&rlm;// المحاضر: محمد العيسوي</div>
+        <div class="t">
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+          >
+            <path
+              d="m12 2 3 6.5 7 1-5 5 1.2 7-6.2-3.4L5.8 21.5 7 14.5l-5-5 7-1L12 2z"
+            />
+          </svg>
+          <span><b>Forbes 30 Under 30</b></span>
+        </div>
+        <div class="t">
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+          >
+            <circle cx="12" cy="12" r="9" />
+            <path d="M8 12h8M12 8v8" />
+          </svg>
+          <span><b>+50,000</b> مستخدم لمنتجاته</span>
+        </div>
+        <div class="t">
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+          >
+            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+            <circle cx="9" cy="7" r="4" />
+            <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" />
+          </svg>
+          <span><b>+600,000</b> متابع · أكبر محتوى تقني بالبلاد</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ WHY I BROUGHT HIM ============ -->
+    <section class="light">
+      <div class="narrow">
+        <div class="eyebrow rev">&rlm;// ليش أنا اللي بحكي معك</div>
+        <h2 class="sec rev">
+          13 سنة وأنا بدير حملات… وهاي أول مرة أحس إنه القواعد تغيّرت
+        </h2>
+        <div class="host rev">
+          <span class="shot"
+            ><img
+              src="https://media.landy-ai.com/Landy-Media/685a6c4cf60f37af53e6b277/rm5uu7yo9f-3067.jpeg"
+              alt="محمد عبد الغني"
+              loading="lazy"
+          /></span>
+          <div>
+            <h3>محمد عبد الغني</h3>
+            <div class="role">
+              &rlm;// المستضيف · مسوّق ومطوّر مواقع ومتاجر إلكترونية
+            </div>
+            <div class="hbadges">
+              <span class="badge">13 سنة خبرة</span>
+              <span class="badge">مواقع ومتاجر إلكترونية</span>
+              <span class="badge">حملات إعلانية</span>
+              <span class="badge">عشرات أصحاب المصالح</span>
+            </div>
+          </div>
+        </div>
+
+        <p class="lead mut rev">
+          أنا محمد عبد الغني. من أكتر من <b>13 سنة</b> وأنا ببني مواقع ومتاجر
+          إلكترونية وبدير حملات إعلانية، وساعدت عشرات أصحاب المصالح إنهم يحوّلوا
+          أفكارهم الرقمية لقصص نجاح حقيقية. يعني لما أحكيلك عن فتح مدير
+          الإعلانات عشرين مرة باليوم، وعن الحملة اللي بتصرف بلا نتيجة وبتكتشفها
+          متأخر، وعن تقارير العملاء آخر الشهر — أنا بحكي من جوّا، مش من قراية.
+        </p>
+        <p class="lead mut rev" style="margin-top: 14px">
+          وبصراحة؟ أول مرة شفت حدا بيسأل جهازه عن أداء حسابه الإعلاني، وبيجيه
+          تحليل وتوصيات بثواني، وبعدين بينفّذ التعديلات بأمر واحد —
+          <b>قلت هاي نهاية طريقة شغل كاملة</b>. بس أنا مسوّق، مش مبرمج — وما بحب
+          أعلّم إشي إلا لما أجيب أحسن واحد فيه. عشان هيك
+          <span class="hl">جبتلكم محمد العيسوي</span>.
+        </p>
+
+        <div class="card rev" style="margin-top: 28px">
+          <div class="who">
+            <img
+              src="https://media.landy-ai.com/Landy-Media/685a6c4cf60f37af53e6b277/1cgi5dlzkk-6019.jpg"
+              alt="محمد العيسوي"
+              loading="lazy"
+            />
+            <div>
+              <h3>محمد العيسوي</h3>
+              <div class="role">
+                المحاضر · مطوّر Full-Stack ومؤسس Infi Developments
+              </div>
+              <p class="mut" style="font-size: 16px">
+                مش مسوّق بيشرحلك أداة — هاد مهندس برمجيات بيشتغل بـ Claude Code
+                كل يوم لبناء منتجات حقيقية. صاحب شركة
+                <b>Infi Developments</b> لتطوير التطبيقات والمواقع وأنظمة
+                الأتمتة للشركات والمصالح. خرّيج علم الحاسوب بمرتبة الشرف (قائمة
+                العميد) من جامعة بار إيلان، وضمن قائمة
+                <b>Forbes 30 Under 30</b> لسنة 2026. منتجاته (AI Toolbox و
+                Landy-AI) بيستخدمها <b>+50,000</b> شخص حول العالم، ودرّب
+                <b>+1,100</b> طالب في نادي الذكاء الاصطناعي العربي. وبيتابعه
+                <b>+600,000</b> شخص على منصات التواصل —
+                <b>أكبر محتوى تقني بالبلاد</b>. وهو كمان
+                <b>محاضر في مجال الذكاء الاصطناعي</b>: بيعطي ورشات ومحاضرات لفرق
+                ومؤسسات وشركات كبيرة بالبلاد — بنوك، شركات تكنولوجيا، ومؤسسات
+                تعليمية.
+              </p>
+              <div class="badges">
+                <span class="badge gold">★ Forbes 30 Under 30 · 2026</span>
+                <span class="badge">+50,000 مستخدم لمنتجاته</span>
+                <span class="badge">+600,000 متابع</span>
+                <span class="badge">محاضر بالذكاء الاصطناعي</span>
+                <span class="badge"
+                  >Infi Developments — تطبيقات · مواقع · أتمتة</span
+                >
+                <span class="badge">+1,100 طالب</span>
+                <span class="badge">+6 سنوات Full-Stack</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="proofs">
+            <figure>
+              <img
+                src="https://media.landy-ai.com/Landy-Media/685a6c4cf60f37af53e6b277/b0kw3o1r58-7590.png"
+                alt="غلاف Forbes 30 Under 30 لسنة 2026"
+                loading="lazy"
+              />
+              <figcaption>Forbes · 30 Under 30 — 2026</figcaption>
+            </figure>
+            <figure>
+              <img
+                src="https://media.landy-ai.com/Landy-Media/685a6c4cf60f37af53e6b277/g375zvvbsw-5630.jpeg"
+                alt="محمد العيسوي في مقابلة تلفزيونية"
+                loading="lazy"
+              />
+              <figcaption>مقابلة تلفزيونية · قناة 10</figcaption>
+            </figure>
+          </div>
+        </div>
+
+        <div
+          class="note rev"
+          style="
+            background: #fff;
+            border-style: solid;
+            border-color: var(--line-l);
+            color: var(--mut-l);
+            margin-top: 20px;
+          "
+        >
+          <b style="color: var(--txt-l)">وإشي صغير بس بيحكي كل شي:</b>
+          الصفحة اللي بتقرأها هلق — كل تصميمها وكودها — انبنت بـ Claude Code.
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PROBLEM ============ -->
+    <section class="light" style="background: var(--cream-2)">
+      <div class="narrow">
+        <div class="eyebrow rev">&rlm;// شوف إذا هاد يومك</div>
+        <h2 class="sec rev">إذا واحد من هاي بيوصفك، فإنت بالمكان الصح</h2>
+
+        <div class="pains">
+          <div class="pain want rev">
+            <div class="x">★</div>
+            <div>
+              بدك <b>تتطوّر وتنقل شغلك للعالم الحقيقي</b> — وتتعلّم كيف تطبّق
+              الذكاء الاصطناعي بشغلك فعلياً عشان توفّر وقت ومصاري.
+            </div>
+          </div>
+          <div class="pain rev">
+            <div class="x">✕</div>
+            <div>
+              بتفتح مدير الإعلانات <b>عشرين مرة باليوم</b> عشان تطمّن ع الأرقام
+              — وبرضو بتحس إنك مش ماسك الصورة.
+            </div>
+          </div>
+          <div class="pain rev">
+            <div class="x">✕</div>
+            <div>
+              بتضيّع <b>أول ساعة من يومك</b> بتجمّع أرقام أمس وتنقلها ع إكسل قبل
+              ما تقدر تقرّر إشي.
+            </div>
+          </div>
+          <div class="pain rev">
+            <div class="x">✕</div>
+            <div>
+              مجموعة إعلانية بتصرف بلا نتيجة، وبتكتشفها <b>بعد يومين</b> —
+              والمصاري راحت.
+            </div>
+          </div>
+          <div class="pain rev">
+            <div class="x">✕</div>
+            <div>
+              عندك أكتر من حساب، بس عملياً بتراقب <b>اللي بيصرخ بس</b> — والباقي
+              شغّال ع بركة الله.
+            </div>
+          </div>
+          <div class="pain rev">
+            <div class="x">✕</div>
+            <div>
+              تقارير العملاء آخر الشهر = <b>يوم شغل ضايع</b> بالإكسل، بدل
+              التفكير الاستراتيجي اللي بتنحاسب عليه.
+            </div>
+          </div>
+        </div>
+
+        <div class="verdict rev">
+          المشكلة مش بمجهودك ولا بشطارتك.
+          <b>المشكلة إنه ما في حدا شغّال معك</b> — إنت لحالك بتراقب وبتحلّل
+          وبتنفّذ وبتقرّر. الميديا باير اللي رح يفوز السنة الجاي مش الأشطر — هو
+          اللي عنده <b>مساعد بيشتغل 24 ساعة</b> وبيجيبله القرار جاهز.
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ MECHANISM ============ -->
+    <section>
+      <div class="wrap">
+        <div class="narrow" style="margin: 0 auto 6px">
+          <div class="eyebrow rev">&rlm;// شو هو Claude Code</div>
+          <h2 class="sec rev">
+            مش شات… <span class="hl">موظف بيشتغل ع جهازك وبينفّذ</span>
+          </h2>
+          <p class="lead mut rev">
+            Claude Code أداة من شركة Anthropic بتشتغل ع جهازك. الفرق عن أي شات
+            إنه <b>بيتوصّل بحسابك الإعلاني وبينفّذ فعلياً</b>: بتحكيله بالعربي
+            شو بدك، وهو بيقرأ أرقام حملاتك، بيحلّلها، بيعطيك التوصية، وبينفّذها
+            لما توافق — وبيقدر يشتغل <b>لحاله كل صباح</b> وبيبعتلك الخلاصة. إنت
+            بتضل المايسترو: كل خطوة بتصير <b>بموافقتك</b>.
+          </p>
+        </div>
+
+        <div class="dolist">
+          <div class="do rev">
+            <span class="v">✓</span>
+            <div>
+              <b>تقرير كل صباح ع جهازك</b> — أداء أمس، وين المصاري راحت، وشو
+              لازم تعمل اليوم. بدون ما تطلبه.
+            </div>
+          </div>
+          <div class="do rev">
+            <span class="v">✓</span>
+            <div>
+              <b>تحليل حسابك الإعلاني كامل</b> — بيقرأ كل الحملات والمجموعات
+              وبيقلّك وين المشكلة بالضبط.
+            </div>
+          </div>
+          <div class="do rev">
+            <span class="v">✓</span>
+            <div>
+              <b>تنفيذ التحسينات بأمر</b> — يوقف الخاسر، يزيد ميزانية الرابح،
+              يضاعف المجموعة الشغّالة.
+            </div>
+          </div>
+          <div class="do rev">
+            <span class="v">✓</span>
+            <div>
+              <b>تنبيهات تلقائية</b> — لما الـ CPA يطلع فوق حدّك، أو التكرار
+              يرتفع، أو حملة تصرف بلا نتيجة.
+            </div>
+          </div>
+          <div class="do rev">
+            <span class="v">✓</span>
+            <div>
+              <b>إنشاء حملات كاملة</b> بمجموعاتها وإعلاناتها وجماهيرها — من
+              الترمنال، بأمر واحد.
+            </div>
+          </div>
+          <div class="do rev">
+            <span class="v">✓</span>
+            <div>
+              <b>كوبي وزوايا إعلانية</b> مبنية ع أرقام حسابك الحقيقية، مش ع
+              تخمين.
+            </div>
+          </div>
+          <div class="do rev">
+            <span class="v">✓</span>
+            <div>
+              <b>تقرير جاهز للعميل</b> بضغطة — بدل يوم شغل بالإكسل آخر كل شهر.
+            </div>
+          </div>
+          <div class="do rev">
+            <span class="v">✓</span>
+            <div><b>مراقبة كل حساباتك</b> بنفس الوقت — مش بس اللي بيصرخ.</div>
+          </div>
+        </div>
+
+        <div class="note rev">
+          <b>بصراحة كاملة:</b> الجزء اللي بيتعلق بميتا بيمرّ عبر Meta Marketing
+          API، وبيحتاج إعداد صلاحيات <b>مرة واحدة</b> — وهاد بالضبط اللي رح
+          نعمله معك خطوة بخطوة بالورشة، والسكربتات جاهزة بين إيديك. إحنا ما
+          بنعلمك تسلّم حسابك للآلة وتنام؛ بنعلمك تشغّل شغلك بأوامر وإنت اللي
+          بتقرّر.
+        </div>
+
+        <div class="cmp rev">
+          <div class="row head">
+            <div class="c">الطريقة اليدوية</div>
+            <div class="c">مع Claude Code</div>
+          </div>
+          <div class="row">
+            <div class="c">بتفتح مدير الإعلانات عشرين مرة باليوم.</div>
+            <div class="c">التقرير <b>بيجيك</b> — وإنت بتقرّر وبس.</div>
+          </div>
+          <div class="row">
+            <div class="c">بتكتشف الحملة الخسرانة بعد يومين.</div>
+            <div class="c">
+              بينبّهك <b>بنفس اليوم</b> — قبل ما تحرق ميزانية.
+            </div>
+          </div>
+          <div class="row">
+            <div class="c">أول ساعة من يومك بتجميع أرقام بالإكسل.</div>
+            <div class="c">الخلاصة <b>جاهزة قبل ما تصحى</b>.</div>
+          </div>
+          <div class="row">
+            <div class="c">بتراقب الحساب اللي بيصرخ بس.</div>
+            <div class="c"><b>كل حساباتك</b> بتنقرأ كل يوم.</div>
+          </div>
+          <div class="row">
+            <div class="c">تقرير العميل يوم شغل آخر الشهر.</div>
+            <div class="c">تقرير <b>بأمر واحد</b>، جاهز للإرسال.</div>
+          </div>
+          <div class="row">
+            <div class="c">90% من وقتك تنفيذ، 10% استراتيجية.</div>
+            <div class="c"><b>90% استراتيجية</b>، 10% تنفيذ.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ AGENDA ============ -->
+    <section class="light">
+      <div class="narrow">
+        <div class="eyebrow rev">&rlm;// أجندة الـ3 ساعات</div>
+        <h2 class="sec rev">
+          شو رح يصير بالضبط من <span dir="ltr">17:00</span> لـ<span dir="ltr"
+            >20:00</span
+          >
+        </h2>
+        <p class="lead mut rev">
+          مش شرائح وكلام. بتطلع من الورشة والنظام شغّال ع جهازك فعلياً.
+        </p>
+
+        <div class="agenda">
+          <div class="ag rev">
+            <div class="t">17:00–17:10</div>
+            <div>
+              <h4>ترحيب وتعارف</h4>
+              <p>
+                نتعرّف ع بعض، ونمرّ ع خطة اليوم: شو رح نعمل بالضبط، شو رح تطلع
+                فيه، وكيف رح تمشي الـ3 ساعات — عشان الكل يكون ماشي ع نفس الخط من
+                أول دقيقة.
+              </p>
+            </div>
+          </div>
+          <div class="ag rev">
+            <div class="t">17:10–17:45</div>
+            <div>
+              <h4>التنصيب من الصفر</h4>
+              <p>
+                تنصيب Claude Code ع جهازك (Mac أو Windows) وتشغيل أول أمر — حتى
+                لو عمرك ما فتحت terminal بحياتك. بنمشي مع الجميع، وما بننتقل لحد
+                ما يكون الكل جاهز.
+              </p>
+            </div>
+          </div>
+          <div class="ag rev">
+            <div class="t">17:45–18:25</div>
+            <div>
+              <h4>
+                وصل حسابك الإعلاني + نصّب حزمة الـ<span dir="ltr">Skills</span>
+              </h4>
+              <p>
+                إعداد الصلاحيات والتوكن خطوة بخطوة (مرة واحدة بالعمر، ومعنا)،
+                وبعدها بتنصّب <b>الـSkills الجاهزة</b> اللي بنعطيك ياها — فبيصير
+                Claude Code بيعرف يشتغل ميديا باير من أول لحظة، بدون ما تبني إشي
+                من الصفر.
+              </p>
+            </div>
+          </div>
+          <div class="ag rev brk">
+            <div class="t">18:25–18:35</div>
+            <div>
+              <h4>بريك ☕</h4>
+              <p>10 دقايق تنفّس — وبنرجع ع الجزء الأهم.</p>
+            </div>
+          </div>
+          <div class="ag rev">
+            <div class="t">18:35–19:15</div>
+            <div>
+              <h4>المسوّق الشخصي بيشتغل</h4>
+              <p>
+                ع حسابك الحقيقي: بيقرأ الأداء، بيقلّك وين المصاري بتضيع، وبينفّذ
+                — يوقف مجموعة خاسرة، يزيد ميزانية الرابحة، يضاعف الشغّالة. كله
+                بموافقتك، خطوة خطوة.
+              </p>
+            </div>
+          </div>
+          <div class="ag rev">
+            <div class="t">19:15–19:45</div>
+            <div>
+              <h4>الأتمتة: تقرير كل صباح وتنبيهات</h4>
+              <p>
+                بنجدول المهام ع جهازك: تقرير يجيك كل صباح بأداء أمس والتوصيات،
+                وتنبيه أوتوماتيكي لما الـCPA يطلع فوق حدّك أو حملة تصرف بلا
+                نتيجة. بيشتغل وإنت نايم.
+              </p>
+            </div>
+          </div>
+          <div class="ag rev">
+            <div class="t">19:45–20:00</div>
+            <div>
+              <h4>حملة كاملة بأمر + تقرير العميل</h4>
+              <p>
+                إنشاء حملة بمجموعاتها وإعلاناتها بأمر واحد، وتوليد تقرير جاهز
+                للعميل من داتا الحساب — الشي اللي بياخد منك يوم آخر الشهر.
+              </p>
+            </div>
+          </div>
+          <div class="ag rev">
+            <div class="t">من <span dir="ltr">20:00</span><br />لآخر سؤال</div>
+            <div>
+              <h4>أسئلة مفتوحة — بدون ساعة</h4>
+              <p>
+                كل واحد بيسأل عن حالته وحسابه ونحلها ع الهوا.
+                <b>وما بنسكّر الزوم لحد ما يخلص آخر سؤال عندك</b> — حتى لو
+                طوّلنا بعد الساعة <span dir="ltr">20:00</span>.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ OFFER STACK ============ -->
+    <section>
+      <div class="narrow">
+        <div class="eyebrow rev">&rlm;// شو بتاخد بالضبط</div>
+        <h2 class="sec rev">
+          نظام «الميديا باير الشخصي» — <span class="hl">8 قطع بتركّب سوا</span>
+        </h2>
+        <p class="lead mut rev">
+          كل قطعة فيهن بتشيل عنك عقبة وحدة بتوقفك اليوم. جمعتهن سوا؟ بتطلع من
+          الجمعة والنظام شغّال.
+        </p>
+
+        <div class="stack rev">
+          <div class="si">
+            <div>
+              <div class="n">
+                الورشة اللايف — 3 ساعات بناء <span class="hl">ع حسابك إنت</span>
+              </div>
+              <div class="d">
+                العقبة: «بشوف ناس بيحكوا عن الذكاء الاصطناعي وما بعرف من وين
+                أبدأ». بنشتغل ع حسابك الحقيقي، مش ع مثال جاهز — وما بننتقل لحد
+                ما يكون الكل ماشي.
+              </div>
+            </div>
+            <div class="p">1,800 ₪</div>
+          </div>
+
+          <div class="si hot">
+            <div>
+              <div class="n">
+                حزمة الـ<span dir="ltr">Skills</span> الجاهزة —
+                <span class="hl">قلب النظام</span>
+              </div>
+              <div class="d">
+                العقبة: «هاي أدوات مبرمجين، أنا ما بعرف أبني إشي». ما بتبني —
+                <b>بتنصّب</b>. خمس مهارات جاهزة بتصير جزء من Claude Code عندك
+                بدقيقة: تحليل الحساب · تقرير الصباح · التنبيهات · إنشاء الحملات
+                · تقرير العميل.
+              </div>
+            </div>
+            <div class="p">1,200 ₪</div>
+          </div>
+
+          <div class="si">
+            <div>
+              <div class="n">نظام «صبّحني بالأرقام»</div>
+              <div class="d">
+                العقبة: «أول ساعة من يومي بتروح ع تجميع أرقام أمس». بنجدوله ع
+                جهازك بالورشة — بيشتغل لحاله وبتلاقي أداء أمس والتوصيات مستنيينك
+                قبل ما تفتح اللابتوب.
+              </div>
+            </div>
+            <div class="p">700 ₪</div>
+          </div>
+
+          <div class="si">
+            <div>
+              <div class="n">
+                دليل الربط مع ميتا —
+                <span class="hl">الخطوة اللي بتوقف الكل</span>
+              </div>
+              <div class="d">
+                العقبة: «التوكن والصلاحيات معقّدة ورح أعلق فيها». خطوة بخطوة
+                بالصور + السكربتات جاهزة للتشغيل، وبنعملها معك لايف بالورشة.
+              </div>
+            </div>
+            <div class="p">500 ₪</div>
+          </div>
+
+          <div class="si">
+            <div>
+              <div class="n">
+                مكتبة الأوامر الجاهزة
+                <span dir="ltr" style="white-space: nowrap"
+                  >(Prompt&nbsp;Pack)</span
+                >
+              </div>
+              <div class="d">
+                العقبة: «بحكيله وما بيفهم عليّ». أوامر نسخ-ولصق مجرَّبة للتحليل،
+                التحسين، الزوايا الإعلانية، وقراءة النتائج — بتعدّل الأسماء
+                والأرقام وبس.
+              </div>
+            </div>
+            <div class="p">500 ₪</div>
+          </div>
+
+          <div class="si">
+            <div>
+              <div class="n">
+                ملف <span class="mono" dir="ltr">CLAUDE.md</span> — دماغ النظام
+                وحدوده
+              </div>
+              <div class="d">
+                العقبة: «خايف يتصرّف لحاله ويحرق ميزانية». هون بتكتب عملاءك
+                وعرضك ونبرتك، و<b>أقصى ميزانية وشو ممنوع</b> — فبيشتغل جوّا الخط
+                اللي إنت رسمته.
+              </div>
+            </div>
+            <div class="p">400 ₪</div>
+          </div>
+
+          <div class="si bonus">
+            <div>
+              <div class="n">
+                <span class="btag">بونص</span> تسجيل الورشة كامل
+              </div>
+              <div class="d">
+                العقبة: «رح أنسى نص اللي صار». ترجعله وقت ما بدك، وتطبّق ع راحتك
+                بدون ضغط.
+              </div>
+            </div>
+            <div class="p">600 ₪</div>
+          </div>
+
+          <div class="si bonus">
+            <div>
+              <div class="n">
+                <span class="btag">بونص</span> جروب الواتساب — 7 أيام بعد الورشة
+              </div>
+              <div class="d">
+                العقبة: «رح أعلق لحالي أول مرة أشغّله ع حساب عميل». تسأل
+                وبنجاوبك — أول أسبوع هو الأهم.
+              </div>
+            </div>
+            <div class="p">400 ₪</div>
+          </div>
+
+          <div class="tot">
+            <div class="r">
+              <span>القيمة الإجمالية</span><span class="v"><s>6,100 ₪</s></span>
+            </div>
+            <div class="r big">
+              <span>استثمارك اليوم</span><span class="v">1,497 ₪</span>
+            </div>
+            <div class="r vat">
+              <span></span><span class="v">شامل الضريبة</span>
+            </div>
+            <div class="r sv">
+              <span>يعني بتوفّر</span><span class="v">4,603 ₪ (75%)</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="center" style="margin-top: 30px">
+          <a href="#join" class="btn big" data-cta="stack">احجز مقعدي الآن</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FIT ============ -->
+    <section class="light">
+      <div class="wrap">
+        <div class="narrow" style="margin: 0 auto">
+          <div class="eyebrow rev">&rlm;// قبل ما تدفع</div>
+          <h2 class="sec rev">هاي الورشة مش لكل الناس</h2>
+        </div>
+        <div class="grid2" style="margin-top: 26px">
+          <div class="fit yes rev">
+            <h3>✓ إلك، إذا…</h3>
+            <ul>
+              <li>
+                <span>✓</span>
+                <div>
+                  بدك تنتقل للعالم الجديد وتتعلّم كيف تستخدم الذكاء الاصطناعي
+                  عشان توفّر وقت ومصاري.
+                </div>
+              </li>
+              <li>
+                <span>✓</span>
+                <div>
+                  إنت ميديا باير أو مسوّق وبتدير حملات — لحالك أو لعملاء.
+                </div>
+              </li>
+              <li>
+                <span>✓</span>
+                <div>
+                  بتحس إنه المتابعة اليدوية صارت سقف لعدد الحسابات اللي بتقدر
+                  تشيلها.
+                </div>
+              </li>
+              <li>
+                <span>✓</span>
+                <div>مستعد تفتح لابتوبك وتطبّق لايف معنا، مش تتفرّج وبس.</div>
+              </li>
+              <li>
+                <span>✓</span>
+                <div>
+                  عندك حساب إعلاني فعّال وبتصرف عليه — عشان نشتغل ع داتا حقيقية.
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div class="fit no rev">
+            <h3>✕ مش إلك، إذا…</h3>
+            <ul>
+              <li>
+                <span>✕</span>
+                <div>
+                  لسه ما اشتغلت بالتسويق الرقمي أبداً وما بتعرف أساسيات الحملات.
+                </div>
+              </li>
+              <li>
+                <span>✕</span>
+                <div>بتدوّر ع "كبسة زر" بتجيب فلوس بدون شغل ولا تفكير.</div>
+              </li>
+              <li>
+                <span>✕</span>
+                <div>
+                  بتستنى وعد بأرقام معيّنة أو <span dir="ltr">ROAS</span>&rlm;
+                  مضمون. إحنا بنعطيك نظام وأدوات — النتائج بتتعلق بعرضك وسوقك
+                  وقراراتك.
+                </div>
+              </li>
+              <li>
+                <span>✕</span>
+                <div>
+                  بتجمّع كورسات وما بتفتحها. هون الشغل بيصير معك بالجلسة، واللي
+                  ما بيطبّق بيوم الورشة غالباً ما بيطبّق بعدها.
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ REQUIREMENTS ============ -->
+    <section>
+      <div class="narrow">
+        <div class="eyebrow rev">&rlm;// جهّز حالك</div>
+        <h2 class="sec rev">شو لازم يكون جاهز عندك يوم الورشة</h2>
+        <p class="lead mut rev">
+          بنحب نكون واضحين قبل ما تدفع — عشان توصل مستعد وتستفيد من كل دقيقة.
+        </p>
+
+        <div class="req">
+          <div class="rq rev">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+            >
+              <rect x="2" y="4" width="20" height="13" rx="2" />
+              <path d="M2 20h20" />
+            </svg>
+            <h4>لابتوب</h4>
+            <p>Mac أو Windows. الورشة عملية — الموبايل ما بينفع.</p>
+          </div>
+          <div class="rq rev">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+            >
+              <path
+                d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"
+              />
+            </svg>
+            <h4>اشتراك Claude مدفوع</h4>
+            <p>خطة Claude Pro — <span dir="ltr">$20</span>&rlm; بالشهر.</p>
+          </div>
+          <div class="rq rev">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+            >
+              <circle cx="12" cy="12" r="9" />
+              <path d="M3 12h18M12 3a15 15 0 0 1 0 18M12 3a15 15 0 0 0 0 18" />
+            </svg>
+            <h4>حساب Meta جاهز</h4>
+            <p>
+              <span dir="ltr">Business&nbsp;Manager</span>&rlm; + صفحة + حساب
+              إعلاني <b>فعّال وبيصرف</b> —
+              <b>رح نشتغل عليه معك لايف بالورشة</b>.
+            </p>
+          </div>
+          <div class="rq rev">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+            >
+              <path d="M5 12.5a10 10 0 0 1 14 0M8.5 16a5.5 5.5 0 0 1 7 0" />
+              <circle cx="12" cy="19.5" r="1" />
+            </svg>
+            <h4>إنترنت مستقر</h4>
+            <p>ورغبة حقيقية تطبّق لايف معنا — هون الفرق كله.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FAQ ============ -->
+    <section class="light" style="background: var(--cream-2)">
+      <div class="narrow">
+        <div class="eyebrow rev">&rlm;// أسئلة بتيجي كتير</div>
+        <h2 class="sec rev">يمكن بتفكر…</h2>
+
+        <div class="faq">
+          <details class="rev">
+            <summary>"ما بعرف برمجة نهائياً — رح أفهم إشي؟"</summary>
+            <div class="a">
+              أيوا، وهاي بالضبط نقطة قوة Claude Code:
+              <b>إنت بتحكي بالعربي، وهو بيكتب الكود</b>. ما رح تكتب سطر برمجي
+              واحد. اللي رح تتعلمه هو كيف <b>توصف</b> اللي بدك بدقة — وهاي مهارة
+              مسوّق، مش مهارة مبرمج. وبنبدأ من لحظة التنصيب، فما بتحتاج تجهّز
+              إشي مسبقاً.
+            </div>
+          </details>
+          <details class="rev">
+            <summary>"إذا ما قدرت أحضر يوم الجمعة؟"</summary>
+            <div class="a">
+              رح يوصلك <b>التسجيل الكامل</b> مع كل الملفات والـSkills والأوامر.
+              بس بنصحك تحضر لايف — التطبيق المباشر ع حسابك والأسئلة هي أحلى شي
+              بالورشة، وهون بتنحلّ مشاكلك ع الهوا.
+            </div>
+          </details>
+          <details class="rev">
+            <summary>"شو يعني Skills جاهزة؟ لازم أبنيها أنا؟"</summary>
+            <div class="a">
+              لأ — إحنا بنعطيكم إياها جاهزة. الـ<b>Skill</b> هي مهارة بتضيفها
+              لـClaude Code فبيصير يعرف يعملها متل ما بدك بالضبط، بدون ما تشرحله
+              كل مرة. بتنصّبها بالورشة بدقيقة، وبتصير عندك مهارات جاهزة: «حلّل
+              الحساب»، «تقرير الصباح»، «نفّذ التحسينات»، «جهّز تقرير العميل».
+              <b>إنت بتنصّب وبتستعمل — مش بتبني.</b>
+            </div>
+          </details>
+          <details class="rev">
+            <summary>"هل بينفّذ ع حسابي لحاله بدون ما أعرف؟"</summary>
+            <div class="a">
+              لأ. القراءة والتحليل والتقارير بتصير لحالها، أما
+              <b>أي تعديل بيمسّ الحساب</b> (إيقاف، ميزانية، تشغيل حملة) بيوقف
+              وبيستنى موافقتك. وإنت اللي بتحدد الحدود بملف
+              <span class="mono" dir="ltr">CLAUDE.md</span>: أقصى ميزانية، شو
+              مسموح وشو ممنوع.
+            </div>
+          </details>
+          <details class="rev">
+            <summary>"1,497 شيكل مبلغ كبير على ورشة"</summary>
+            <div class="a">
+              خلينا نحسبها: قديش بتكلّفك مجموعة إعلانية بتصرف يومين بلا نتيجة
+              وما انتبهتلها؟ وقديش قيمة ساعة بترجعلك كل صباح؟ وقديش بتساوي إنك
+              تقدر تشيل <b>حساب أو اتنين زيادة</b> بنفس الجهد؟ إذا النظام وفّر
+              عليك <b>حملة خسرانة وحدة بالشهر</b>، بتكون رجّعت المبلغ من الشهر
+              الأول — وكل شهر بعدها ربح صافي.
+            </div>
+          </details>
+          <details class="rev">
+            <summary>"في فاتورة؟"</summary>
+            <div class="a">
+              أكيد. رح توصلك <b>فاتورة رسمية</b> على الإيميل بعد الدفع — فبتقدر
+              تسجّلها مصروف للبزنس.
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FINAL CTA ============ -->
+    <section class="final" id="join">
+      <div class="narrow center">
+        <div class="eyebrow rev">&rlm;// القرار</div>
+        <h2 class="sec rev">هالجمعة عندك خيارين</h2>
+        <p class="lead mut rev" style="max-width: 620px; margin: 0 auto">
+          إما تكمل بنفس الطريقة اللي بتعرف نتيجتها — نفس فتحات مدير الإعلانات،
+          نفس تقارير آخر الشهر، ونفس الحملات اللي بتكتشفها متأخر. أو تقعد معنا 3
+          ساعات وتطلع <b>وعندك ميديا باير شخصي بيشتغل معك كل يوم</b>.
+        </p>
+
+        <div class="cdown rev" id="cd">
+          <div class="cd"><b id="cd-d">--</b><span>يوم</span></div>
+          <div class="cd"><b id="cd-h">--</b><span>ساعة</span></div>
+          <div class="cd"><b id="cd-m">--</b><span>دقيقة</span></div>
+          <div class="cd"><b id="cd-s">--</b><span>ثانية</span></div>
+        </div>
+        <div class="rev">
+          <span class="seats"
+            >◉ التسجيل بيسكّر الخميس <span dir="ltr">27/08</span> ·
+            <span dir="ltr">20:00</span> — أو لما تخلص المقاعد</span
+          >
+        </div>
+        <p class="intimate rev">
+          وبنقولها بصراحة: <b>بيهمّنا تكون الورشة حميمية وصغيرة</b> — عشان كل
+          واحد يلحق يسأل، ونوقف معه إذا علق، ونشوف شاشته إذا لزم. عشان هيك
+          <b>عدد المقاعد محدود</b>، ولما نوصل للعدد بنسكّر التسجيل حتى لو ضل
+          وقت.
+        </p>
+
+        <div class="paybox">
+          <div class="pricetag">
+            <b><span dir="ltr">&rlm;1,497 ₪</span></b
+            ><span>شامل الضريبة</span>
+          </div>
+          <a href="#" class="btn big" data-pay data-cta="final"
+            >سجّلني الآن — دفع آمن</a
+          >
+          <div class="secure">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+            >
+              <rect x="4" y="10" width="16" height="11" rx="2" />
+              <path d="M8 10V7a4 4 0 0 1 8 0v3" />
+            </svg>
+            دفع مشفّر · فاتورة رسمية · تسجيل كامل
+          </div>
+        </div>
+
+        <!-- lead form — always visible, no extra click -->
+        <div class="formbox">
+          <h3>سجّل بياناتك وبنتواصل معك</h3>
+          <p>
+            عبّي الخانات وبنرجعلك ع الواتساب بتفاصيل الدفع والزوم — أو اسأل أي
+            إشي قبل ما تدفع.
+          </p>
+          <form id="lead-form" novalidate>
+            <div class="field">
+              <label for="f-name">الاسم الكامل <i>*</i></label
+              ><input
+                id="f-name"
+                name="name"
+                type="text"
+                required
+                autocomplete="name"
+              />
+            </div>
+            <div class="field">
+              <label for="f-phone">رقم الواتساب <i>*</i></label
+              ><input
+                id="f-phone"
+                name="phone"
+                type="tel"
+                required
+                inputmode="tel"
+                autocomplete="tel"
+                dir="ltr"
+              />
+            </div>
+            <div class="field">
+              <label for="f-email">الإيميل <i>*</i></label
+              ><input
+                id="f-email"
+                name="email"
+                type="email"
+                required
+                autocomplete="email"
+                dir="ltr"
+              />
+            </div>
+            <input
+              type="hidden"
+              name="source"
+              value="claude-code-media-buyers-28-08"
+            />
+            <button type="submit" class="btn big" style="max-width: none">
+              ابعتوا التفاصيل
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="fl">
+        <svg><use href="#cmark" /></svg> ورشة Claude Code للميديا بايرز
+      </div>
+      <p>
+        استضافة وتقديم: محمد عبد الغني · المحاضر: محمد العيسوي —
+        <span class="mono" dir="ltr">Infi Developments</span>
+      </p>
+      <p>© 2026 · جميع الحقوق محفوظة</p>
+    </footer>
+
+    <!-- sticky mobile bar -->
+    <div class="sticky">
+      <div class="pz">
+        <span dir="ltr">&rlm;1,497 ₪</span><small>شامل الضريبة</small>
+      </div>
+      <a href="#join" class="btn" data-cta="sticky">احجز مقعدك</a>
+    </div>
+
+    <script>
+      /* ---------- config ---------- */
+      var CONFIG = {
+        PAYMENT_URL:
+          "https://pay.sumit.co.il/4mftjr/hwqjjd/11j4afo/payment/" /* بيظهر بعد إرسال الفورم */,
+        WHATSAPP: "972524446528" /* عبد الغني · 052-444-6528 */,
+        PIXEL_ID: "921945033715465" /* meta pixel    */,
+        DEADLINE: "2026-08-27T20:00:00+03:00" /* registration closes */,
+
+        /* google sheet endpoint — Apps Script web app (بينتهي بـ /exec).
+     فاضي؟ الليدز بتروح ع الـendpoint القديم زي ما هي. */
+        SHEET_URL:
+          "https://script.google.com/macros/s/AKfycbxe6SI17kgDsD1jGyHjO4yMwVJvDsDAViulCvzmZRhPaZ_8eNVUCLYqNrn5MxJAzeE/exec",
+        SHEET_SECRET: "cc-ws-2026-x7k9" /* نفسه بـ Code.gs */,
+
+        LEADS_SLUG: "claude-code-media-buyers" /* fallback endpoint */,
+      };
+
+      /* ---------- meta pixel ---------- */
+      (function () {
+        if (!CONFIG.PIXEL_ID) return;
+        !(function (f, b, e, v, n, t, s) {
+          if (f.fbq) return;
+          n = f.fbq = function () {
+            n.callMethod
+              ? n.callMethod.apply(n, arguments)
+              : n.queue.push(arguments);
+          };
+          if (!f._fbq) f._fbq = n;
+          n.push = n;
+          n.loaded = !0;
+          n.version = "2.0";
+          n.queue = [];
+          t = b.createElement(e);
+          t.async = !0;
+          t.src = v;
+          s = b.getElementsByTagName(e)[0];
+          s.parentNode.insertBefore(t, s);
+        })(
+          window,
+          document,
+          "script",
+          "https://connect.facebook.net/en_US/fbevents.js",
+        );
+        fbq("init", CONFIG.PIXEL_ID);
+        fbq("track", "PageView");
+      })();
+      function track(ev, data) {
+        if (window.fbq) fbq("track", ev, data || {});
+      }
+
+      /* ---------- payment buttons ---------- */
+      /* الدفع بيجي بعد الفورم — فكل أزرار الصفحة بتوصّل للفورم، مش لصفحة الدفع مباشرة */
+      document.querySelectorAll("[data-pay]").forEach(function (el) {
+        el.addEventListener("click", function (e) {
+          e.preventDefault();
+          var f = document.getElementById("f-name");
+          if (f) {
+            f.scrollIntoView({ behavior: "smooth", block: "center" });
+            setTimeout(function () {
+              f.focus();
+            }, 450);
+          }
+        });
+      });
+
+      /* ---------- whatsapp float ---------- */
+      (function () {
+        if (!CONFIG.WHATSAPP) return;
+        var a = document.createElement("a");
+        a.href =
+          "https://wa.me/" +
+          CONFIG.WHATSAPP +
+          "?text=" +
+          encodeURIComponent("مرحبا! بدي أسأل عن ورشة Claude Code يوم 28/08");
+        a.target = "_blank";
+        a.rel = "noopener";
+        a.setAttribute("aria-label", "واتساب");
+        a.style.cssText =
+          "position:fixed;inset-inline-start:16px;bottom:78px;z-index:75;width:52px;height:52px;border-radius:50%;background:#25D366;display:grid;place-items:center;box-shadow:0 8px 22px -6px rgba(0,0,0,.6)";
+        a.innerHTML =
+          '<svg width="27" height="27" viewBox="0 0 32 32" fill="#fff"><path d="M26.6 5.4A14.8 14.8 0 0 0 16.1 1C7.9 1 1.2 7.7 1.2 15.9c0 2.7.7 5.3 2 7.5L1.1 31l7.9-2.1a14.9 14.9 0 0 0 7.1 1.8c8.2 0 14.9-6.7 14.9-14.9 0-4-1.7-7.7-4.4-10.4zM16.1 28.2a12.2 12.2 0 0 1-6.3-1.7l-.5-.3-4.7 1.2 1.2-4.6-.3-.5a12.3 12.3 0 1 1 10.6 5.9zm6.8-9.2c-.4-.2-2.2-1.1-2.5-1.2-.4-.1-.6-.2-.8.2s-1 1.2-1.2 1.5-.4.3-.8.1a10 10 0 0 1-3-1.9 11 11 0 0 1-2-2.5c-.2-.4 0-.6.2-.8s.4-.4.5-.6.3-.4.4-.6a.7.7 0 0 0 0-.7c-.1-.2-.8-2-1.1-2.8-.3-.7-.6-.6-.8-.6h-.7a1.4 1.4 0 0 0-1 .5A4.2 4.2 0 0 0 8.8 12c.1 1.5.7 2.8 1.5 3.9a16.4 16.4 0 0 0 6.3 5.6c.6.2 1.3.5 2 .7a4.8 4.8 0 0 0 1.5.1 3.2 3.2 0 0 0 2.5-1.7 2.6 2.6 0 0 0 .2-1.3c-.1-.1-.3-.2-.7-.4z"/></svg>';
+        document.body.appendChild(a);
+      })();
+
+      /* ---------- countdown ---------- */
+      (function () {
+        var box = document.getElementById("cd"),
+          end = new Date(CONFIG.DEADLINE).getTime();
+        var els = {
+          d: document.getElementById("cd-d"),
+          h: document.getElementById("cd-h"),
+          m: document.getElementById("cd-m"),
+          s: document.getElementById("cd-s"),
+        };
+        function p(n) {
+          return n < 10 ? "0" + n : "" + n;
+        }
+        function tick() {
+          var left = end - Date.now();
+          if (left <= 0) {
+            box.innerHTML =
+              '<div class="cd" style="min-width:auto;padding:12px 18px"><b style="font-size:18px">التسجيل انسكر</b><span>تواصل معنا للدورة الجاي</span></div>';
+            return;
+          }
+          var s = Math.floor(left / 1000);
+          els.d.textContent = p(Math.floor(s / 86400));
+          els.h.textContent = p(Math.floor((s % 86400) / 3600));
+          els.m.textContent = p(Math.floor((s % 3600) / 60));
+          els.s.textContent = p(s % 60);
+          setTimeout(tick, 1000);
+        }
+        if (box && els.d) tick();
+      })();
+
+      /* ---------- reveal on scroll ---------- */
+      (function () {
+        var els = document.querySelectorAll(".rev");
+        if (!("IntersectionObserver" in window)) {
+          els.forEach(function (e) {
+            e.classList.add("in");
+          });
+          return;
+        }
+        var io = new IntersectionObserver(
+          function (en) {
+            en.forEach(function (x) {
+              if (x.isIntersecting) {
+                x.target.classList.add("in");
+                io.unobserve(x.target);
+              }
+            });
+          },
+          { rootMargin: "0px 0px -8% 0px", threshold: 0.08 },
+        );
+        els.forEach(function (e, i) {
+          e.style.transitionDelay = Math.min(i % 4, 3) * 70 + "ms";
+          io.observe(e);
+        });
+      })();
+
+      /* ---------- hero terminal typewriter ---------- */
+      (function () {
+        var box = document.getElementById("term");
+        if (!box) return;
+        var reduce = window.matchMedia(
+          "(prefers-reduced-motion: reduce)",
+        ).matches;
+        var scenes = [
+          [
+            ["p", "claude"],
+            ["c", "صبّحني — شو صار بحسابي أمس؟"],
+            ["o", "● meta-api  insights(7d)  → 4 حملات · 11 مجموعة"],
+            ["g", "✓ الصرف 2,340 ₪ · 61 ليد · CPL 38.3 ₪ (تحسّن 12%)"],
+            ["g", '  ⚠ مجموعة "عام 18-24" صرفت 180 ₪ بلا ولا ليد'],
+          ],
+          [
+            ["p", "claude"],
+            ["c", "وقّف الخاسر وزيد الرابح 30%"],
+            ["o", '● meta-api  pause_adset("عام 18-24")     → PAUSED'],
+            ["o", '● meta-api  update_budget("أمهات 25-34") → +30%'],
+            ["g", "✓ تم — بموافقتك. وفّرنا ~180 ₪ باليوم"],
+          ],
+          [
+            ["p", "claude"],
+            ["c", "نبّهني لما الـCPL يطلع فوق 45 ₪"],
+            ["o", "● schedule  monitor-cpl  → كل 3 ساعات"],
+            ["g", "✓ المراقبة شغّالة — بيوصلك تنبيه أول ما يتخطى الحد"],
+          ],
+          [
+            ["p", "claude"],
+            ["c", "جهّزلي تقرير العميل لآخر 7 أيام"],
+            ["o", "● Write  reports/client-report.pdf"],
+            ["g", "✓ التقرير جاهز — أرقام، رسوم، وخلاصة بالعربي"],
+          ],
+        ];
+        var si = 0;
+        function line(cls, txt) {
+          var d = document.createElement("div");
+          d.className = "tl " + cls;
+          d.textContent = txt;
+          box.appendChild(d);
+          return d;
+        }
+        function render(scene, done) {
+          box.innerHTML = "";
+          var i = 0;
+          (function next() {
+            if (i >= scene.length) {
+              done && setTimeout(done, 2600);
+              return;
+            }
+            var kind = scene[i][0],
+              txt = scene[i][1];
+            i++;
+            if (kind === "p") {
+              var w = document.createElement("div");
+              w.className = "tl cmd";
+              w.innerHTML =
+                '<span class="tp">✻ ' +
+                txt +
+                '</span> <span class="tc"></span><span class="caret"></span>';
+              box.appendChild(w);
+              var target = scene[i] && scene[i][0] === "c" ? scene[i][1] : "";
+              i++;
+              var span = w.querySelector(".tc"),
+                j = 0;
+              (function type() {
+                if (reduce) {
+                  span.textContent = target;
+                  w.querySelector(".caret").remove();
+                  return next();
+                }
+                if (j >= target.length) {
+                  w.querySelector(".caret").remove();
+                  return setTimeout(next, 420);
+                }
+                span.textContent += target[j++];
+                setTimeout(type, 26);
+              })();
+            } else {
+              line(kind === "g" ? "tg" : "to", txt);
+              setTimeout(next, kind === "g" ? 260 : 180);
+            }
+          })();
+        }
+        function loop() {
+          render(scenes[si % scenes.length], function () {
+            si++;
+            loop();
+          });
+        }
+        var started = false;
+        var io = new IntersectionObserver(
+          function (e) {
+            if (e[0].isIntersecting && !started) {
+              started = true;
+              loop();
+            }
+          },
+          { threshold: 0.2 },
+        );
+        io.observe(box);
+      })();
+
+      /* ---------- lead form ---------- */
+      (function () {
+        var form = document.getElementById("lead-form");
+        if (!form) return;
+        form.addEventListener("submit", async function (e) {
+          e.preventDefault();
+          var btn = form.querySelector('button[type="submit"]'),
+            orig = btn.innerHTML;
+          var old = form.parentNode.querySelector(".fmsg");
+          if (old) old.remove();
+
+          var F =
+            form.elements; /* form.name is the form's own property — use elements */
+          if (
+            !F.name.value.trim() ||
+            !F.phone.value.trim() ||
+            !F.email.value.trim()
+          ) {
+            return msg("err", "عمّي عبّي كل الخانات المطلوبة 🙏");
+          }
+          if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(F.email.value.trim())) {
+            return msg("err", "الإيميل مش مكتوب صح — راجعه.");
+          }
+
+          btn.innerHTML = 'جاري الإرسال<span class="spin"></span>';
+          btn.disabled = true;
+          var box = form.parentNode;
+          box.classList.add("is-loading");
+          var note = document.createElement("div");
+          note.className = "sending-note";
+          note.textContent = "لحظة… عم بنسجّل بياناتك 🙏";
+          form.appendChild(note);
+          var noteT = setTimeout(function () {
+            note.classList.add("show");
+          }, 1200);
+
+          var data = {};
+          new FormData(form).forEach(function (v, k) {
+            data[k] = v;
+          });
+          var q = new URLSearchParams(location.search);
+          [
+            "utm_source",
+            "utm_medium",
+            "utm_campaign",
+            "utm_content",
+            "utm_term",
+          ].forEach(function (k) {
+            if (q.get(k)) data[k] = q.get(k);
+          });
+          data.page = location.href;
+          data.referrer = document.referrer || "";
+
+          try {
+            if (CONFIG.SHEET_URL) {
+              /* google sheet — no-cors: بمجرد ما يوصل الطلب، Apps Script بينفّذ وبيكتب الصف.
+           ما بنقرأ الرد لأنه صفحة الرد تبعت جوجل بترجع 404 أحياناً *بعد* ما الصف انكتب —
+           فلو اعتبرناها فشل، المستخدم بيشوف خطأ وبيعيد الإرسال وبيصير عندنا صف مكرر.
+           fetch بيرمي استثناء لو الطلب ما وصل أصلاً (نت مقطوع) — وهون بس بنروح ع الاحتياطي. */
+              var payload = Object.assign(
+                { secret: CONFIG.SHEET_SECRET },
+                data,
+              );
+              await fetch(CONFIG.SHEET_URL, {
+                method: "POST",
+                mode: "no-cors",
+                headers: { "Content-Type": "text/plain;charset=utf-8" },
+                body: JSON.stringify(payload),
+              });
+            } else {
+              var host = (location.hostname || "").split(".")[0];
+              var slug =
+                host && host !== "www" && host !== "localhost"
+                  ? host
+                  : CONFIG.LEADS_SLUG;
+              var r2 = await fetch(
+                "https://api-1.landy-ai.com/leads/" + encodeURIComponent(slug),
+                {
+                  method: "POST",
+                  headers: { "Content-Type": "application/json" },
+                  body: JSON.stringify(data),
+                },
+              );
+              if (!r2.ok) throw 0;
+            }
+            track("Lead", { value: 1497, currency: "ILS" });
+            form.reset();
+            showPayStep();
+          } catch (_) {
+            /* الشيت وقع؟ ما بنضيّع الليد — بنبعته ع الـendpoint الاحتياطي */
+            try {
+              var host2 = (location.hostname || "").split(".")[0];
+              var slug2 =
+                host2 && host2 !== "www" && host2 !== "localhost"
+                  ? host2
+                  : CONFIG.LEADS_SLUG;
+              var rb = await fetch(
+                "https://api-1.landy-ai.com/leads/" + encodeURIComponent(slug2),
+                {
+                  method: "POST",
+                  headers: { "Content-Type": "application/json" },
+                  body: JSON.stringify(data),
+                },
+              );
+              if (!rb.ok) throw 0;
+              track("Lead", { value: 1497, currency: "ILS" });
+              form.reset();
+              showPayStep();
+            } catch (__) {
+              msg(
+                "err",
+                "صار خطأ بالإرسال. جرّب كمان مرة أو تواصل معنا ع الواتساب.",
+              );
+            }
+          } finally {
+            clearTimeout(noteT);
+            if (note && note.parentNode) note.remove();
+            box.classList.remove("is-loading");
+            btn.innerHTML = orig;
+            btn.disabled = false;
+          }
+        });
+        /* بعد ما يوصل التسجيل: بنبدّل الفورم بخطوة الدفع */
+        function showPayStep() {
+          var box = form.parentNode;
+          var old = box.querySelector(".fmsg");
+          if (old) old.remove();
+          box.innerHTML =
+            '<div class="paystep">' +
+            '<div class="ps-ok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg> تسجيلك وصل</div>' +
+            "<h3>ضلّت خطوة وحدة — ثبّت مقعدك</h3>" +
+            "<p>المقعد بينحجز فعلياً بعد الدفع. بعدها بتوصلك الفاتورة ورابط الزوم ع الإيميل.</p>" +
+            '<div class="ps-price"><b><span dir="ltr">&rlm;1,497 ₪</span></b><span>شامل الضريبة</span></div>' +
+            '<a class="btn big" id="pay-now" href="' +
+            CONFIG.PAYMENT_URL +
+            '" target="_blank" rel="noopener">ادفع وثبّت مقعدي</a>' +
+            '<div class="secure"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg> دفع مشفّر · فاتورة رسمية</div>' +
+            '<div class="ps-note">ما بتقدر تدفع هلق؟ ما في مشكلة — بياناتك وصلتنا وبنتواصل معك ع الواتساب.</div>' +
+            "</div>";
+          var pay = box.querySelector("#pay-now");
+          pay.addEventListener("click", function () {
+            track("InitiateCheckout", { value: 1497, currency: "ILS" });
+          });
+          box.scrollIntoView({ behavior: "smooth", block: "center" });
+        }
+
+        function msg(kind, text) {
+          var d = document.createElement("div");
+          d.className = "fmsg " + kind;
+          d.textContent = text;
+          form.parentNode.insertBefore(d, form);
+          d.scrollIntoView({ behavior: "smooth", block: "center" });
+        }
+      })();
+    </script>
+  </body>
+</html>
