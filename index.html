@@ -42,7 +42,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Cairo:wght@600;700;800;900&family=Tajawal:wght@400;500;700&family=JetBrains+Mono:wght@400;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&family=Tajawal:wght@400;500;700&display=swap"
       rel="stylesheet"
     />
 
@@ -117,8 +117,7 @@
         display: block;
       }
       .mono {
-        font-family:
-          "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+        font-family: "Cairo", "Tajawal", sans-serif;
       }
 
       /* ---------- layout ---------- */
@@ -155,7 +154,7 @@
 
       /* ---------- type ---------- */
       .eyebrow {
-        font-family: "JetBrains Mono", monospace;
+        font-family: "Cairo", sans-serif;
         font-size: 12px;
         letter-spacing: 0.12em;
         text-transform: uppercase;
@@ -293,7 +292,7 @@
       }
       .topbar .when {
         margin-inline-start: auto;
-        font-family: "JetBrains Mono", monospace;
+        font-family: "Cairo", sans-serif;
         font-size: 12.5px;
         color: var(--mut-d);
         white-space: nowrap;
@@ -429,7 +428,7 @@
         border-radius: 10px;
         background: rgba(255, 255, 255, 0.045);
         border: 1px solid var(--line-d);
-        font-family: "JetBrains Mono", monospace;
+        font-family: "Cairo", sans-serif;
         font-size: 13px;
         color: #dddad3;
       }
@@ -494,14 +493,14 @@
       }
       .term-bar span {
         margin-inline-start: 8px;
-        font-family: "JetBrains Mono", monospace;
+        font-family: "Cairo", sans-serif;
         font-size: 11.5px;
         color: #7c7972;
         direction: ltr;
       }
       .term-body {
         padding: 18px 16px;
-        font-family: "JetBrains Mono", monospace;
+        font-family: "Cairo", sans-serif;
         font-size: 13px;
         line-height: 2.05;
         direction: ltr;
@@ -581,7 +580,7 @@
         flex: 0 0 auto;
       }
       .trust .tlabel {
-        font-family: "JetBrains Mono", monospace;
+        font-family: "Cairo", sans-serif;
         font-size: 12px;
         color: var(--coral);
         letter-spacing: 0.06em;
@@ -673,7 +672,7 @@
         margin-bottom: 5px;
       }
       .host .role {
-        font-family: "JetBrains Mono", monospace;
+        font-family: "Cairo", sans-serif;
         font-size: 12px;
         color: var(--coral);
         letter-spacing: 0.04em;
@@ -704,7 +703,7 @@
         margin-bottom: 3px;
       }
       .who .role {
-        font-family: "JetBrains Mono", monospace;
+        font-family: "Cairo", sans-serif;
         font-size: 12px;
         color: var(--coral);
         letter-spacing: 0.04em;
@@ -726,7 +725,7 @@
         margin-top: 14px;
       }
       .badge {
-        font-family: "JetBrains Mono", monospace;
+        font-family: "Cairo", sans-serif;
         font-size: 12px;
         padding: 6px 11px;
         border-radius: 8px;
@@ -780,7 +779,7 @@
         }
       }
       .proofs figcaption {
-        font-family: "JetBrains Mono", monospace;
+        font-family: "Cairo", sans-serif;
         font-size: 11px;
         color: var(--mut-d);
         padding: 7px 9px;
@@ -942,6 +941,110 @@
         color: #e8e5de;
       }
 
+      /* ---------- real results ---------- */
+      .res {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+        margin-top: 26px;
+      }
+      @media (max-width: 720px) {
+        .res {
+          grid-template-columns: 1fr;
+        }
+      }
+      .rcard {
+        background: #fff;
+        border: 1px solid var(--line-l);
+        border-radius: 16px;
+        padding: 18px 20px;
+        box-shadow: 0 2px 10px rgba(20, 20, 19, 0.05);
+      }
+      .rcard.wide {
+        grid-column: 1 / -1;
+        border-color: rgba(217, 119, 87, 0.45);
+        background: rgba(217, 119, 87, 0.04);
+      }
+      .rtag {
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+        background: var(--cream-2);
+        border-radius: 8px;
+        padding: 5px 11px;
+        font-size: 12.5px;
+        font-weight: 700;
+        color: #4a4740;
+      }
+      .rtag svg {
+        width: 14px;
+        height: 14px;
+        color: #4a4740;
+        flex: 0 0 auto;
+      }
+      .rstatus {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin: 12px 0 14px;
+        font-size: 14px;
+        color: var(--mut-l);
+      }
+      .rstatus i {
+        width: 9px;
+        height: 9px;
+        border-radius: 50%;
+        background: #2f7a4c;
+        flex: 0 0 auto;
+      }
+      .rstatus b {
+        color: #2f7a4c;
+        font-weight: 700;
+      }
+      .rrow {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(86px, 1fr));
+        gap: 14px;
+      }
+      .rrow > div {
+        padding-inline-start: 14px;
+        border-inline-start: 1px solid var(--line-l);
+      }
+      .rrow > div:first-child {
+        padding-inline-start: 0;
+        border-inline-start: 0;
+      }
+      .rrow b {
+        display: block;
+        font-family: "Cairo", sans-serif;
+        font-size: clamp(21px, 3.4vw, 27px);
+        font-weight: 800;
+        color: var(--txt-l);
+        line-height: 1.25;
+        direction: ltr;
+        text-align: right;
+      }
+      .rcard.wide .rrow b {
+        color: var(--coral-2);
+      }
+      .rrow span {
+        font-size: 13.5px;
+        color: var(--mut-l);
+      }
+      .res-note {
+        margin-top: 18px;
+        font-size: 14px;
+        color: var(--mut-l);
+        background: #fff;
+        border: 1px solid var(--line-l);
+        border-radius: 12px;
+        padding: 14px 16px;
+        line-height: 1.8;
+      }
+      .res-note b {
+        color: var(--txt-l);
+      }
+
       /* ---------- agenda ---------- */
       .agenda {
         margin-top: 28px;
@@ -959,7 +1062,7 @@
         border-bottom: 0;
       }
       .ag .t {
-        font-family: "JetBrains Mono", monospace;
+        font-family: "Cairo", sans-serif;
         font-size: 14px;
         color: var(--coral-2);
         font-weight: 700;
@@ -1021,7 +1124,7 @@
         line-height: 1.7;
       }
       .si .p {
-        font-family: "JetBrains Mono", monospace;
+        font-family: "Cairo", sans-serif;
         font-size: 14px;
         color: #b9b6af;
         white-space: nowrap;
@@ -1043,7 +1146,7 @@
       .btag {
         display: inline-block;
         vertical-align: 2px;
-        font-family: "JetBrains Mono", monospace;
+        font-family: "Cairo", sans-serif;
         font-size: 11px;
         font-weight: 700;
         color: var(--coral-2);
@@ -1067,7 +1170,7 @@
         padding: 4px 0;
       }
       .tot .r .v {
-        font-family: "JetBrains Mono", monospace;
+        font-family: "Cairo", sans-serif;
         direction: ltr;
       }
       .tot .r.big {
@@ -1249,7 +1352,7 @@
       }
       .cd b {
         display: block;
-        font-family: "JetBrains Mono", monospace;
+        font-family: "Cairo", sans-serif;
         font-size: 26px;
         font-weight: 700;
         color: #fff;
@@ -1278,7 +1381,7 @@
         margin-bottom: 14px;
       }
       .pricetag b {
-        font-family: "JetBrains Mono", monospace;
+        font-family: "Cairo", sans-serif;
         font-size: 38px;
         font-weight: 700;
         color: #fff;
@@ -1305,7 +1408,7 @@
         border-radius: 999px;
         background: rgba(218, 119, 86, 0.13);
         border: 1px solid rgba(218, 119, 86, 0.34);
-        font-family: "JetBrains Mono", monospace;
+        font-family: "Cairo", sans-serif;
         font-size: 13.5px;
         color: #efa184;
       }
@@ -1320,7 +1423,7 @@
         justify-content: center;
         gap: 8px;
         margin-top: 14px;
-        font-family: "JetBrains Mono", monospace;
+        font-family: "Cairo", sans-serif;
         font-size: 12px;
         color: var(--mut-d);
       }
@@ -1385,7 +1488,7 @@
         display: inline-flex;
         align-items: center;
         gap: 8px;
-        font-family: "JetBrains Mono", monospace;
+        font-family: "Cairo", sans-serif;
         font-size: 13px;
         font-weight: 700;
         color: var(--ok);
@@ -1414,7 +1517,7 @@
       }
       .ps-price b {
         display: block;
-        font-family: "JetBrains Mono", monospace;
+        font-family: "Cairo", sans-serif;
         font-size: 34px;
         font-weight: 700;
         color: #fff;
@@ -1539,7 +1642,7 @@
       }
       .sticky .pz small {
         display: block;
-        font-family: "JetBrains Mono", monospace;
+        font-family: "Cairo", sans-serif;
         font-size: 10.5px;
         color: var(--mut-d);
         font-weight: 400;
@@ -2081,6 +2184,130 @@
             <div class="c">90% من وقتك تنفيذ، 10% استراتيجية.</div>
             <div class="c"><b>90% استراتيجية</b>، 10% تنفيذ.</div>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ REAL RESULTS ============ -->
+    <section class="light">
+      <div class="narrow">
+        <div class="eyebrow rev">&rlm;// أرقام من حسابات حقيقية</div>
+        <h2 class="sec rev">مش كلام — هاي لقطات من حملات شغّالة</h2>
+        <p class="lead mut rev">
+          كل بطاقة تحت هي حملة حقيقية بتشتغل بنفس الطريقة اللي رح نعلّمك ياها —
+          التحليل والقرار والتنفيذ بتمرّ عبر Claude Code، وإنت اللي بتوافق.
+          أسماء العملاء والحسابات مخفية طبعاً.
+        </p>
+
+        <div class="res rev">
+          <article class="rcard">
+            <span class="rtag"
+              ><svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+              >
+                <rect x="2" y="5" width="20" height="14" rx="3" />
+                <path d="M7 10h.01M11 10h6M11 14h4" />
+              </svg>
+              New leads</span
+            >
+            <div class="rstatus"><i></i><b>Active</b> · حملة ليدز</div>
+            <div class="rrow">
+            <div><b><span dir="ltr">7</span></b><span>ليد (فورم)</span></div>
+            <div><b><span dir="ltr">₪42.37</span></b><span>تكلفة الليد</span></div>
+            <div><b><span dir="ltr">₪296.58</span></b><span>الصرف</span></div>
+            </div>
+          </article>
+          <article class="rcard">
+            <span class="rtag"
+              ><svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+              >
+                <rect x="2" y="5" width="20" height="14" rx="3" />
+                <path d="M7 10h.01M11 10h6M11 14h4" />
+              </svg>
+              New leads</span
+            >
+            <div class="rstatus"><i></i><b>Active</b> · حملة ليدز</div>
+            <div class="rrow">
+            <div><b><span dir="ltr">9</span></b><span>ليد (فورم)</span></div>
+            <div><b><span dir="ltr">₪96.61</span></b><span>تكلفة الليد</span></div>
+            <div><b><span dir="ltr">₪869.50</span></b><span>الصرف</span></div>
+            </div>
+          </article>
+          <article class="rcard">
+            <span class="rtag"
+              ><svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+              >
+                <rect x="2" y="5" width="20" height="14" rx="3" />
+                <path d="M7 10h.01M11 10h6M11 14h4" />
+              </svg>
+              Sales</span
+            >
+            <div class="rstatus"><i></i><b>Active</b> · مبيعات متجر</div>
+            <div class="rrow">
+            <div><b><span dir="ltr">27</span></b><span>عملية شراء</span></div>
+            <div><b><span dir="ltr">₪39.65</span></b><span>تكلفة الشراء</span></div>
+            </div>
+          </article>
+          <article class="rcard">
+            <span class="rtag"
+              ><svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+              >
+                <rect x="2" y="5" width="20" height="14" rx="3" />
+                <path d="M7 10h.01M11 10h6M11 14h4" />
+              </svg>
+              Engagement</span
+            >
+            <div class="rstatus"><i></i><b>Active</b> · تفاعل</div>
+            <div class="rrow">
+            <div><b><span dir="ltr">385,391</span></b><span>تفاعل مع المنشور</span></div>
+            <div><b><span dir="ltr">₪0.26</span></b><span>تكلفة التفاعل</span></div>
+            </div>
+          </article>
+          <article class="rcard wide">
+            <span class="rtag"
+              ><svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+              >
+                <rect x="2" y="5" width="20" height="14" rx="3" />
+                <path d="M7 10h.01M11 10h6M11 14h4" />
+              </svg>
+              Sales</span
+            >
+            <div class="rstatus"><i></i><b>Active</b> · مبيعات كتالوج</div>
+            <div class="rrow">
+            <div><b><span dir="ltr">1,396</span></b><span>عملية شراء</span></div>
+            <div><b><span dir="ltr">₪33.90</span></b><span>تكلفة الشراء</span></div>
+            </div>
+          </article>
+        </div>
+
+        <div class="res-note rev">
+          <b>وبنقولها بصراحة:</b> هاي أرقام حسابات حقيقية بأسواق وعروض مختلفة —
+          مش وعد بنتيجة. النتيجة عندك بتتعلق بعرضك وسوقك وميزانيتك. اللي منضمنه
+          إنك بتطلع بنظام شغّال بيقرأ حسابك وبينفّذ بأمر.
         </div>
       </div>
     </section>
